@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RLIFE CITY Roleplay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+.section-about {
+  background: rgba(10,20,40,0.85);
+  border-top: 2px solid #1a3a6e;
+  border-bottom: 2px solid #1a3a6e;
+  color: #fff;
+  text-align: left;
+}
+
+.about-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #f8f401;
+  text-shadow: 0 0 20px #58a6ff;
+}
+
+.about-sub {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #58a6ff;
+  margin-bottom: 0.5rem;
+}
+
+.about-text {
+  font-size: 2rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+        body {
+            background: url('backgroup.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Rubik', 'Arial', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.7s, box-shadow 0.7s;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+.section-main {
+    background: radial-gradient(ellipse at top left,
+                rgba(10,22,48,0.85) 0%,
+                rgba(9,16,32,0.8) 40%,
+                rgba(9,16,32,0.85) 100%);
+}
+
+.section-intro {
+    background: linear-gradient(120deg,
+                rgba(10,22,48,0.85) 0%,
+                rgba(9,16,32,0.8) 40%,
+                rgba(9,16,32,0.85) 100%);
+}
+
+.section-trailer {
+    background: linear-gradient(120deg,
+                rgba(10,22,48,0.85) 0%,
+                rgba(9,16,32,0.8) 40%,
+                rgba(9,16,32,0.85) 100%);
+}
+        .active-section {
+            box-shadow: 0 0 120px 30px #58a6ffcc;
+            z-index: 2;
+        }
+        .navbar {
+            background: #081120;
+            border-bottom: 2px solid #1a3a6e;
+            box-shadow: 0 2px 12px #0a3c75cc;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: #f8f401 !important;
+            text-shadow: 0 0 24px #58a6ff, 0 0 8px #fff;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 24px #58a6ff, 0 0 8px #fff; }
+            to { text-shadow: 0 0 48px #91eac9, 0 0 16px #fff; }
+        }
+        .nav-link {
+            color: #dcdcdc !important;
+            font-weight: 600;
+            margin-right: 1rem;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #58a6ff !important;
+            text-shadow: 0 2px 12px #58a6ff;
+            transform: scale(1.08);
+        }
+/* Hiệu ứng lắc + sáng icon */
+@keyframes shake {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.1); }
+  50% { transform: rotate(10deg) scale(1.1); }
+  75% { transform: rotate(-6deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.nav-link i:hover,
+.info-box i:hover {
+  color: #ffcc00; /* hoặc #58a6ff nếu muốn đồng bộ theme */
+  text-shadow: 0 0 12px #ffcc00, 0 0 20px #ff6600;
+  animation: shake 0.5s ease-in-out;
+}
+
+        .logo-title {
+            font-size: 10rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ebfc00;
+            text-shadow: 0 0 32px #58a6ff, 0 0 12px #fff;
+            animation: glow 2s infinite alternate;
+        }
+        .roleplay-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #58a6ff;
+            text-shadow: 0 0 16px #58a6ff;
+            letter-spacing: 2px;
+        }
+        .info-boxes {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .info-box {
+            background: rgba(10, 20, 40, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 0 20px #0f3266 inset;
+            padding: 1.2rem 2.2rem;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-width: 120px;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            border: 2px solid #1f4a8c;
+            color: #fff;
+        }
+        .info-box i {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+            color: #58a6ff;
+            transition: transform 0.2s;
+        }
+        .info-box:hover {
+            transform: scale(1.12) rotate(-2deg);
+            border-color: #58a6ff;
+            box-shadow: 0 0 24px #58a6ff;
+            background: rgba(10, 20, 40, 0.95);
+        }
+        .btn-play {
+            background: linear-gradient(90deg, #ff9d00, #ff5e00);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 12px;
+            padding: 0.7rem 2.5rem;
+            box-shadow: 0 4px 16px #ff7b00cc;
+            border: none;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-play:hover {
+            background: linear-gradient(90deg, #ffb347, #ff7b00);
+            transform: scale(1.08);
+            color: #fff;
+            box-shadow: 0 0 24px #ff9d00;
+        }
+        .city-card {
+            background: rgba(10, 20, 40, 0.85);
+            border: 2px solid #1f4a8c;
+            border-radius: 12px;
+            width: 180px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+
+  display: block;          /* ép thành khối thường */
+  column-count: 1 !important; /* hủy chia nhiều cột */
+  width: 100%;
+  height: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: left;
+  line-height: 1.6;
+  font-size: 16px;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+
+        }
+        .city-card:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 0 22px #58a6ff;
+            transform: scale(1.08);
+            background: #0f3266;
+        }
+        .arrow-next {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: 0.3s;
+        }
+        .arrow-next:hover {
+            color: #91eac9;
+            transform: scale(1.2) rotate(10deg);
+            text-shadow: 0 0 12px #58a6ff;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #58a6ff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 12px #58a6ff;
+        }
+        .trailer-card {
+            background: rgba(10, 20, 40, 0.85);
+            border-radius: 12px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 2px 12px #0f3266;
+            border: 2px solid #1f4a8c;
+            transition: 0.3s;
+        }
+
+        .trailer-card:hover {
+            transform: scale(1.06);
+            border-color: #58a6ff;
+            box-shadow: 0 0 22px #58a6ff;
+            background: rgba(15, 50, 102, 0.9);
+        }
+        .trailer-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .trailer-card:hover img {
+            transform: scale(1.05);
+        }
+        .trailer-card .caption {
+            padding: 0.7rem 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: #0f3266;
+            text-align: center;
+        }
+.trailer-card .caption {
+    padding: 0.7rem 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #0f3266;
+    text-align: center;
+}
+/* Hiệu ứng xuất hiện khi cuộn */
+.trailer-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.trailer-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Thêm mới để tạo khoảng cách giữa các trailer-card */
+.trailer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* chỉnh khoảng cách theo ý bạn, ví dụ 15px hay 30px */
+}
+
+        footer {
+            background: #081120;
+            border-top: 2px solid #1a3a6e;
+            box-shadow: 0 -2px 12px #0a3c75cc;
+            color: #aaa;
+        }
+        footer a {
+            color: #58a6ff;
+            transition: 0.3s;
+        }
+   footer a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px #58a6ff;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Giữ nguyên toàn bộ HTML gốc -->
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+            RLIFE CITY
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="#" class="nav-link active">Trang chủ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Tin tức</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Donate</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Đăng nhập</a></li>
+            </ul>
+            <ul class="navbar-nav ms-3">
+                <!-- Facebook -->
+                <li class="nav-item">
+                    <a href="https://www.facebook.com/groups/1817261779149186" target="_blank" class="nav-link">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <!-- TikTok -->
+                <li class="nav-item">
+                    <a href="https://www.tiktok.com/@r_lifecity?_t=ZS-8zYxzbP9MYL&_r=1" target="_blank" class="nav-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </li>
+                <!-- YouTube -->
+                <li class="nav-item">
+                    <a href="https://www.youtube.com/channel/UCZ9iaRX-KkBBfK7uHHL8caA" target="_blank" class="nav-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+            </div>
+        </div>
+    </section>
+
+  <section class="section-intro" id="intro-section">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="section-title">Hướng dẫn nhập vai</div>
+        <div class="city-list">
+          <div class="city-card">
+
+            <h3>1. Nguyên tắc nhập vai (Roleplay Rules)</h3>
+            <ul>
+              <li>Hãy sống như ngoài đời thật: nhân vật trong game là một con người riêng biệt, có cảm xúc, nghề nghiệp, mục tiêu.</li>
+              <li>Không phá luật RP:
+                <ul>
+                  <li>No Powergaming (PG): không làm những việc ngoài khả năng con người (ví dụ: nhảy từ nhà 10 tầng xuống mà không chết).</li>
+                  <li>No Metagaming (MG): không dùng thông tin ngoài đời (Discord, stream) để áp vào game.</li>
+                  <li>No Random Deathmatch (RDM): không được tự ý đánh/giết người khi không có lý do hợp lý.</li>
+                  <li>No Vehicle Deathmatch (VDM): không được cố tình dùng xe cán người.</li>
+                </ul>
+              </li>
+              <li>Tôn trọng người chơi khác: luôn giữ câu chuyện hợp lý, không cãi nhau kiểu “ngoài game”.</li>
+            </ul>
+
+            <h3>2. Cách nhập vai hiệu quả</h3>
+            <ul>
+              <li>Tạo nhân vật riêng: nghĩ sẵn tên, tuổi, tính cách, nghề nghiệp (VD: Nguyễn Văn Hùng – tài xế taxi vui tính).</li>
+              <li>Xây dựng câu chuyện: đặt mục tiêu cho nhân vật (làm giàu, trở thành cảnh sát, hoặc mafia…).</li>
+              <li>Giao tiếp tự nhiên: dùng giọng nói, xưng hô hợp tình huống.
+                <ul>
+                  <li>Là dân thường → nói năng bình thường, tôn trọng.</li>
+                  <li>Là xã hội đen → có thể gằn giọng, tạo khí chất.</li>
+                </ul>
+              </li>
+              <li>Tương tác nhiều: đi làm nghề, nói chuyện, kết bạn, tham gia tổ chức trong game.</li>
+            </ul>
+
+            <h3>3. Một số tips cho người mới</h3>
+            <ul>
+              <li>Vào server thường có hướng dẫn tân thủ → hãy đi theo để hiểu cách chơi.</li>
+              <li>Đừng quá “diễn sâu” lúc đầu, hãy nhập vai từ từ, quan sát cách người khác nói chuyện.</li>
+            </ul>
+
+          </div>
+          <span class="arrow-next"><i class="fa fa-chevron-right"></i></span>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <!-- phần bên phải -->
+      </div>
+    </div>
+  </div>
+</section>
+
+                    <div class="section-title">GIỚI THIỆU</div>
+<div class="trailer-list">
+    <a href="https://www.rlifecity.vn/sukien-tet" target="_blank" class="trailer-card">
+        <img src="Quoc-khanh-2-9.jpg" alt="Trailer 1">
+        <div class="caption">Sự kiện Tết Nguyên Đán</div>
+    </a>
+    <a href="https://www.rlifecity.vn/huongdan-nhapvai" target="_blank" class="trailer-card">
+        <img src="cau-hinh-choi-gta-5-4.jpg" alt="Trailer 2">
+        <div class="caption">Hướng dẫn nhập vai</div>
+    </a>
+    <a href="https://www.rlifecity.vn/tao-nhan-vat" target="_blank" class="trailer-card">
+        <img src="chame.png" alt="Trailer 3">
+        <div class="caption">Tạo nhân vật & Công việc đầu tiên</div>
+    </a>
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="section-trailer" id="trailer-section">
+    <div class="container mt-5">
+        <div class="section-title text-center">THAM GIA NGAY !!</div>
+        <div class="row justify-content-center">
+            <!-- Bước 1 -->
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
+                    <div>
+                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 1</div>
+                        <div style="font-size:1.3rem;font-weight:bold;">TẢI VÀ CÀI ĐẶT GTA5</div>
+                        <div class="mt-3" style="color:#ccc;">
+                            Nếu bạn có bản quyền: Bạn có thể tải trên steam, epic games hoặc tải ở đây
+                        </div>
+                    </div>
+                    <a href="https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V_Enhanced/?snr=1_7_7_151_150_1"
+                       target="_blank" class="btn-play mt-3">TẢI GAME GỐC</a>
+                </div>
+            </div>
+            <!-- Bước 2 -->
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
+                    <div>
+                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 2</div>
+                        <div style="font-size:1.3rem;font-weight:bold;">CÀI ĐẶT LAUNCHER</div>
+                        <div class="mt-3" style="color:#ccc;">
+                            Để có thể kết nối đến máy chủ của chúng tôi. Bạn phải cài đặt launcher ở bên dưới
+                        </div>
+                    </div>
+                    <a href="RLife.exe" download class="btn-play mt-3">TẢI LAUNCHER</a>
+                </div>
+            </div>
+            <!-- Bước 3 -->
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
+                    <div>
+                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 3</div>
+                        <div style="font-size:1.3rem;font-weight:bold;">THAM GIA DISCORD</div>
+                        <div class="mt-3" style="color:#ccc;">
+                            Vui lòng tham gia discord của chúng tôi để được hỗ trợ nhanh chóng và kịp thời
+                        </div>
+                    </div>
+                    <a href="https://discord.gg/Z86msdRTD9" target="_blank" class="btn-play mt-3">THAM GIA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-about py-5">
+  <div class="container d-flex flex-column flex-md-row align-items-center">
+    <img src="logo.png" alt="RLIFE Logo" style="height:200px; margin-right:30px;">
+    <div>
+      <h3 class="about-title">RLIFE CITY ROLEPLAY</h3>
+      <p class="about-sub">Thành phố nhập vai đầy sáng tạo và gắn kết cộng đồng tại Việt Nam</p>
+      <p class="about-text">
+        RLIFE CITY được tạo ra bởi những người yêu thích GTA V Roleplay, với mục tiêu xây dựng một cộng đồng bền vững, sáng tạo và thân thiện. Với nhiều tính năng mới, cập nhật liên tục và đội ngũ hỗ trợ tận tâm, RLIFE CITY mang đến trải nghiệm nhập vai chân thật, phong phú và hấp dẫn nhất tại Việt Nam.
+
+Không chỉ dừng lại ở những công việc và nhiệm vụ truyền thống, thành phố của chúng tôi luôn được mở rộng với các hệ thống nghề nghiệp đa dạng, sự kiện đặc sắc và những câu chuyện do chính người chơi tạo nên. Người chơi có thể hóa thân thành bất kỳ vai trò nào mà họ mong muốn: từ cảnh sát, bác sĩ, doanh nhân, cho đến những công dân bình thường cùng nhau kiến tạo nên một xã hội sinh động.
+
+RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vui vẻ, nơi mọi ý kiến đều được lắng nghe và mọi đóng góp đều được trân trọng. Chúng tôi tin rằng sự gắn kết của cộng đồng chính là sức mạnh lớn nhất để thành phố ngày càng phát triển và trở thành một điểm đến hàng đầu cho những ai đam mê nhập vai trong GTA V.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="mt-5 text-center py-4">
+    <div class="container">
+        <div class="mb-2">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/groups/1817261779149186" target="_blank" class="me-3">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@r_lifecity?_t=ZS-8zYxzbP9MYL&_r=1" target="_blank" class="me-3">
+                <i class="fab fa-tiktok fa-lg"></i>
+            </a>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/channel/UCZ9iaRX-KkBBfK7uHHL8caA" target="_blank" class="me-3">
+                <i class="fab fa-youtube fa-lg"></i>
+            </a>
+        </div>
+        <div>© 2025 RLIFE CITY Roleplay. All Rights Reserved.</div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('scroll', function() {
+        document.querySelectorAll('section').forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if(rect.top < window.innerHeight/2 && rect.bottom > window.innerHeight/2) {
+                section.classList.add('active-section');
+            } else {
+                section.classList.remove('active-section');
+            }
+        });
+    });
+    </script>
+
+
+
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll(".trailer-card");
+
+    function revealOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+        cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+                setTimeout(() => {
+                    card.classList.add("visible");
+                }, index * 150); // delay lần lượt 150ms mỗi card
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+</script>
+
+</body>
+</html>
