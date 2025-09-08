@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RLIFECITY Roleplay</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/2d3d2d2d2d.js" crossorigin="anonymous"></script>
+  <style>
+    /* Toàn bộ nền */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column; /* sắp xếp header, main, footer theo cột */
+      background: url("anh.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #FFD700;
+    }
+
+    .socials a {
+      margin-left: 10px;
+      font-size: 20px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #FFD700;
+    }
+
+    /* Main */
+    main {
+      text-align: center;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      margin: 50px;
+      border-radius: 15px;
+      flex: 1; /* chiếm hết không gian trống để đẩy footer xuống */
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #FFD700;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 40px;
+    }
+
+    .stats div {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
+
+    .play-btn {
+      display: inline-block;
+      background: #FFD700;
+      color: black;
+      padding: 15px 30px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .play-btn:hover {
+      background: orange;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      RLIFECITY
+    </div>
+      
+<nav>
+  <a href="#">Trang chủ</a>
+  
+  <!-- Discord với icon bo góc -->
+  <a href="https://discord.gg/AVNvECkM" target="_blank">
+    <img src="logodiscord.png" 
+         alt="Discord" 
+         style="height:18px; vertical-align:middle; margin-right:5px; border-radius:5px; background:white; padding:2px;">
+    Discord
+  </a>
+  
+  <!-- Facebook với icon bo góc -->
+  <a href="https://www.facebook.com/groups/1817261779149186" target="_blank">
+    <img src="facebook-logo.png" 
+         alt="Facebook" 
+         style="height:18px; vertical-align:middle; margin-right:5px; border-radius:5px; background:white; padding:2px;">
+    Facebook
+  </a>
+  
+  <a href="#">Đăng nhập</a>
+</nav>
+
+
+    
+    <div class="socials">
+      <a href="https://discord.gg/AVNvECkM" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://www.facebook.com/groups/1817261779149186" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h1>RLIFECITY ROLEPLAY</h1>
+    <p>LOS SANTOS - Roleplay City</p>
+
+    <div class="stats">
+      <div><span>TỔNG</span><br><b>Đang cập nhật</b></div>
+      <div><span>ONLINE</span><br><b class="online">Đang cập nhật</b></div>
+      <div><span>SERVER</span><br><b>LOS SANTOS</b></div>
+    </div>
+
+    <a href="RLife.exe" download class="play-btn">Chơi ngay</a>
+  </main>
+
+  <footer>
+    © 2025 RLIFECITY Roleplay. All rights reserved.
+  </footer>
+</body>
+</html>
