@@ -40,9 +40,7 @@
 }
 
         body {
-            background: url('backgroup.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
+                        color: #fff;
             font-family: 'Rubik', 'Arial', sans-serif;
             min-height: 100vh;
             margin: 0;
@@ -377,9 +375,27 @@
   background: #cd7f32;
   color: #000;
 }
-    </style>
+    
+/* Video background */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1; /* nằm dưới toàn bộ nội dung */
+}
+
+</style>
 </head>
 <body>
+    <!-- Video background -->
+    <video autoplay muted loop id="bg-video">
+        <source src="Comp 1.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video nền.
+    </video>
+
     <!-- Giữ nguyên toàn bộ HTML gốc -->
     <!-- Navbar -->
     <!-- Navbar -->
@@ -431,8 +447,8 @@
                 <div class="roleplay-title mb-4">ROLEPLAY</div>
                 <div class="mb-2" style="font-size:1.2rem;">LOS SANTOS - Roleplay City</div>
                 <div class="info-boxes">
-                    <div class="info-box"><i class="fa fa-users"></i><br>Tổng<br><span style="font-size:2rem;">893</span></div>
-                    <div class="info-box"><i class="fa fa-signal"></i><br>Online<br><span style="font-size:2rem;">35</span></div>
+                    <div class="info-box"><i class="fa fa-users"></i><br>Tổng<br><span style="font-size:2rem;">Đang cập nhật</span></div>
+                    <div class="info-box"><i class="fa fa-signal"></i><br>Online<br><span style="font-size:2rem;">Đang cập nhật</span></div>
                     <div class="info-box"><i class="fa fa-server"></i><br>Server<br><span style="font-size:2rem;">LOS SANTOS</span></div>
                 </div>
                 <button class="btn-play mt-3" onclick="window.location.href='RLife.exe'">
@@ -654,5 +670,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-
-
