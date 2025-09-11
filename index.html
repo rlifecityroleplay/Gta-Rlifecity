@@ -993,7 +993,7 @@ function dragElement(elmnt) {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   function randomOnline() {
-    const min = 15;  // số nhỏ nhất
+    const min = 24;  // số nhỏ nhất
     const max = 58;  // số lớn nhất
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -1015,11 +1015,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const newNumber = randomOnline();
     el.textContent = newNumber;
     localStorage.setItem("online-count", newNumber);
-  }, 60000);
+  }, 120000);
 });
 </script>
 </body>
 </html>
+
 
 
 
