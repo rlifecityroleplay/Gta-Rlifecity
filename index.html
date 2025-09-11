@@ -551,7 +551,10 @@ body.light-theme {
                 <div class="mb-2" style="font-size:1.2rem;">LOS SANTOS - Roleplay City</div>
                 <div class="info-boxes">
                     <div class="info-box"><i class="fa fa-users"></i><br>Tổng<br><span style="font-size:2rem;">918</span></div>
-                    <div class="info-box"><i class="fa fa-signal"></i><br>Online<br><span style="font-size:2rem;">275</span></div>
+                    <div class="info-box">
+  <i class="fa fa-signal"></i><br>Online<br>
+  <span id="online-count" style="font-size:2rem;">37</span>
+</div>
                     <div class="info-box"><i class="fa fa-server"></i><br>Server<br><span style="font-size:2rem;">RLIFE CITY</span></div>
                 </div>
                 <button class="btn-play mt-3" onclick="window.location.href='RLife.exe'">
@@ -586,19 +589,19 @@ body.light-theme {
 
     <!-- Cột bên phải: GIỚI THIỆU -->
     <div class="col-lg-6">
-      <div class="section-title">MỤC SỰ KIỆN</div>
+      <div class="section-title">GIỚI THIỆU</div>
       <div class="trailer-list">
         <a href="duatopxitson.html" target="_blank" class="trailer-card">
           <img src="xitson.png" alt="Trailer 1">
           <div class="caption">Sự kiện Đua Top Xịt Sơn</div>
         </a>
-        <a href="#" class="trailer-card">
-          <img src="baotri.png" alt="Trailer 2">
-          <div class="caption">Đang cập nhật</div>
+        <a href="huongdannhapvai.html" class="trailer-card">
+          <img src="cau-hinh-choi-gta-5-4.jpg" alt="Trailer 2">
+          <div class="caption">Hướng dẫn nhập vai</div>
         </a>
-        <a href="#" target="_blank" class="trailer-card">
-          <img src="baotri.png" alt="Trailer 3">
-          <div class="caption">Đang cập nhật</div>
+        <a href="https://www.rlifecity.vn/tao-nhan-vat" target="_blank" class="trailer-card">
+          <img src="chame.png" alt="Trailer 3">
+          <div class="caption">Tạo nhân vật & Công việc đầu tiên</div>
         </a>
       </div>
     </div>
@@ -988,14 +991,24 @@ function dragElement(elmnt) {
 }
 </script>
 <script>
-// Gộp và tối giản: đã dùng doReveal ở trên nên bỏ lặp
-</script>
+document.addEventListener("DOMContentLoaded", () => {
+  function randomOnline() {
+    const min = 15;  // số nhỏ nhất
+    const max = 58;  // số lớn nhất
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    const el = document.getElementById("online-count");
+    if (el) el.textContent = randomNumber;
+  }
 
+  // chạy ngay khi load
+  randomOnline();
+
+  // cứ 5 giây đổi một lần
+  setInterval(randomOnline, 60000);
+});
+</script>
 </body>
 </html>
-
-
-
 
 
 
