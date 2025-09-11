@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đua Top Xịt Sơn — Rlife City</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#9b5cf6;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.03);
+      --success:#10b981;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071029 0%, #071726 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+      padding:22px;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+    .logo{
+      width:74px;
+      height:74px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#5eead4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:20px;
+      color:#061024;
+      box-shadow:0 6px 18px rgba(155,92,246,0.16), inset 0 -6px 20px rgba(255,255,255,0.03);
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    p.lead{
+      margin:4px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      margin-top:12px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:10px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .section-title{
+      font-weight:600;
+      color:#dfe9ff;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .meta-list{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    ul.clean{
+      padding-left:20px;
+      margin:8px 0 0 0;
+      color:var(--muted);
+    }
+
+    table.prize{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:14px;
+    }
+    table.prize th, table.prize td{
+      padding:10px 8px;
+      text-align:left;
+      border-bottom:1px dashed rgba(255,255,255,0.03);
+    }
+    table.prize th{
+      font-weight:700;
+      background:rgba(255,255,255,0.01);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      background:linear-gradient(90deg,#ffffff08, #ffffff04);
+      border-radius:999px;
+      font-weight:600;
+      color:var(--accent);
+      font-size:13px;
+      border:1px solid rgba(155,92,246,0.12);
+    }
+
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent),#5eead4);
+      color:#041226;
+      font-weight:700;
+      text-decoration:none;
+      border:0;
+      cursor:pointer;
+      box-shadow:0 8px 30px rgba(155,92,246,0.12);
+    }
+
+    footer{margin-top:14px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+    @media (min-width:800px){
+      .grid{grid-template-columns: 1fr 360px;}
+      header{align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main" aria-labelledby="title">
+    <header>
+      <div class="logo" aria-hidden="true">RLIFE</div>
+      <div>
+        <h1 id="title">🎨 Sự kiện — Đua Top Xịt Sơn (Rlife City)</h1>
+        <p class="lead">Bắt đầu: <strong>11 tháng 9, 2025</strong> · Mọi crew trong server đều có thể tham gia</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left column -->
+      <div>
+        <section class="card" aria-labelledby="time-title">
+          <h2 id="time-title" class="section-title">⏰ Thời gian & Quy tắc</h2>
+          <div class="meta-list">
+            <div><strong>Bắt đầu:</strong> 11/09/2025</div>
+            <div><strong>Top Tuần:</strong> 00:00 thứ Hai → 23:59 Chủ Nhật</div>
+            <div><strong>Top Tháng:</strong> Tổng kết 23:59 ngày cuối cùng của mỗi tháng</div>
+          </div>
+
+          <hr style="margin:12px 0; border:none; border-top:1px solid rgba(255,255,255,0.02)">
+
+          <h3 class="section-title" style="font-size:15px">📸 Cách thức tính điểm</h3>
+          <p class="muted">Mỗi crew sẽ có một kênh riêng (Discord hoặc nền tảng khác) để đăng ảnh xịt sơn. <strong>Điểm = Số ảnh hợp lệ</strong>.</p>
+          <ul class="clean">
+            <li>Ảnh hợp lệ phải tuân thủ yêu cầu do BQT gửi.</li>
+            <li>Mỗi ảnh chỉ được tính 1 lần; ảnh trùng lặp/đã đăng trước đó có thể bị loại.</li>
+            <li>Thời gian đăng quyết định thứ hạng trong tuần/tháng tương ứng.</li>
+          </ul>
+
+          <h3 class="section-title" style="margin-top:12px">⚖️ Quy định chung</h3>
+          <p class="muted">Nghiêm cấm mọi hành vi gian lận (sử dụng phần mềm thứ ba, hack, cheat, lợi dụng bug...). Crew vi phạm sẽ bị hủy kết quả và có thể chịu hình phạt theo quy định của server.</p>
+        </section>
+
+        <section class="card" aria-labelledby="award-week">
+          <h2 id="award-week" class="section-title">🏆 Giải thưởng Top Tuần</h2>
+
+          <table class="prize" aria-label="Giải thưởng Top Tuần">
+            <thead>
+              <tr>
+                <th>Hạng</th>
+                <th>Phần thưởng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge">Top 1</span></td>
+                <td>10 Bullpuprifle MK2 · 20 Bullpuprifle thường · 10,000,000 IG</td>
+              </tr>
+              <tr>
+                <td><span class="badge">Top 2</span></td>
+                <td>5 Bullpuprifle MK2 · 10 Bullpuprifle thường · 5,000,000 IG</td>
+              </tr>
+              <tr>
+                <td><span class="badge">Top 3</span></td>
+                <td>10 Bullpuprifle thường · 3,000,000 IG</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+<section class="card" aria-labelledby="award-month">
+  <h2 id="award-month" class="section-title">🏅 Giải thưởng Top Tháng</h2>
+
+  <table class="prize" aria-label="Giải thưởng Top Tháng">
+    <thead>
+      <tr>
+        <th>Hạng</th>
+        <th>Phần thưởng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge">Top 1</span></td>
+        <td>
+          <ul class="clean">
+            <li>30 Bullpuprifle MK2</li>
+            <li>40 Bullpuprifle thường</li>
+            <li>20,000,000 IG</li>
+            <li>1 phụ kiện Kính xịn xò</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="badge">Top 2</span></td>
+        <td>
+          <ul class="clean">
+            <li>15 Bullpuprifle MK2</li>
+            <li>20 Bullpuprifle thường</li>
+            <li>10,000,000 IG</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="badge">Top 3</span></td>
+        <td>
+          <ul class="clean">
+            <li>20 Bullpuprifle thường</li>
+            <li>6,000,000 IG</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+        <section class="card" aria-labelledby="manage">
+          <h2 id="manage" class="section-title">📊 Quản lý & Cập nhật</h2>
+          <p class="muted">BQT sẽ tạo kênh riêng cho từng crew để đăng ảnh, thường xuyên kiểm tra và cập nhật điểm số. Bảng xếp hạng sẽ được cập nhật công khai trên Discord hoặc bài ghim trên Fanpage.</p>
+
+          <h3 class="section-title" style="margin-top:12px">🎁 Trao giải</h3>
+          <p class="muted">Sau khi sự kiện kết thúc, BQT sẽ công bố crew chiến thắng chính thức và tiến hành trao thưởng theo danh sách giải.</p>
+        </section>
+      </div>
+
+      <!-- Right column -->
+      <aside>
+        <div class="card center" aria-labelledby="quick">
+          <h3 id="quick" class="section-title">🔔 Tóm tắt nhanh</h3>
+          <p style="margin:8px 0; font-weight:700">Bắt đầu: <span style="color:var(--accent)">11/09/2025</span></p>
+          <p class="muted">Top Tuần: Thứ Hai → Chủ Nhật<br/>Top Tháng: Cuối tháng</p>
+          <div style="margin-top:12px">
+            <button class="btn" onclick="copyRules()">Sao chép thể lệ</button>
+          </div>
+        </div>
+
+    
+
+
+  <script>
+    function copyRules(){
+      const text = [
+        "Sự kiện: Đua Top Xịt Sơn — Rlife City",
+        "Bắt đầu: 11/09/2025",
+        "Top Tuần: 00:00 Thứ Hai → 23:59 Chủ Nhật",
+        "Top Tháng: Tổng kết 23:59 ngày cuối cùng của mỗi tháng",
+        "Điểm = Số ảnh xịt sơn hợp lệ đăng trong kênh crew",
+        "Cấm gian lận (hack/cheat/bug). Vi phạm = hủy kết quả"
+      ].join("\\n");
+      navigator.clipboard?.writeText(text).then(()=>{
+        alert('Đã sao chép thể lệ ngắn vào clipboard.');
+      }, ()=>{
+        prompt('Sao chép thủ công:', text);
+      });
+    }
+  </script>
+</body>
+</html>
