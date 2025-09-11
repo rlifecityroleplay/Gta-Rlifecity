@@ -995,20 +995,32 @@ document.addEventListener("DOMContentLoaded", () => {
   function randomOnline() {
     const min = 15;  // số nhỏ nhất
     const max = 58;  // số lớn nhất
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    const el = document.getElementById("online-count");
-    if (el) el.textContent = randomNumber;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // chạy ngay khi load
-  randomOnline();
+  const el = document.getElementById("online-count");
+  if (!el) return;
 
-  // cứ 5 giây đổi một lần
-  setInterval(randomOnline, 60000);
+  // Nếu localStorage đã có số thì dùng lại
+  let currentOnline = localStorage.getItem("online-count");
+  if (currentOnline) {
+    el.textContent = currentOnline;
+  } else {
+    // lần đầu chưa có thì giữ nguyên số HTML ban đầu (37)
+    localStorage.setItem("online-count", el.textContent);
+  }
+
+  // Sau mỗi 60 giây thì random lại và lưu
+  setInterval(() => {
+    const newNumber = randomOnline();
+    el.textContent = newNumber;
+    localStorage.setItem("online-count", newNumber);
+  }, 60000);
 });
 </script>
 </body>
 </html>
+
 
 
 
