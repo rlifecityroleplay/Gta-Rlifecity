@@ -600,7 +600,7 @@ body.light-theme {
           <div class="caption">Sự kiện Shoot It</div>
         </a>
         <a href="https://www.rlifecity.vn/tao-nhan-vat" target="_blank" class="trailer-card">
-          <img src="load.jpg" alt="Trailer 3">
+          <img src="chame.png" alt="Trailer 3">
           <div class="caption">Đang cập nhật</div>
         </a>
       </div>
@@ -1018,6 +1018,69 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 120000);
 });
 </script>
+<!-- Floating Event Logo -->
+<div id="event-logo">
+  <img src="logo.png" alt="Event Logo">
+  <button class="close-btn">&times;</button>
+</div>
+
+<style>
+#event-logo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1100;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#event-logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px gold, 0 0 40px orange;
+  animation: pulseGlow 2s infinite alternate;
+}
+#event-logo:hover {
+  transform: scale(1.1);
+}
+#event-logo .close-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4444;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+@keyframes pulseGlow {
+  from { box-shadow: 0 0 12px gold, 0 0 24px orange; }
+  to { box-shadow: 0 0 24px gold, 0 0 48px red; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const eventLogo = document.getElementById("event-logo");
+  const closeBtn = eventLogo.querySelector(".close-btn");
+
+  eventLogo.addEventListener("click", () => {
+    // khi bấm logo thì mở vòng quay sự kiện
+    window.location.href = "vqmm.html"; 
+  });
+
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    eventLogo.style.display = "none";
+  });
+});
+</script>
+
 </body>
 </html>
 
