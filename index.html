@@ -224,12 +224,13 @@ html { scroll-behavior: smooth; }
             text-shadow: 0 0 12px #58a6ff;
         }
         .section-title {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #58a6ff;
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 12px #58a6ff;
         }
+
 .trailer-card {
     background: rgba(10, 20, 40, 0.9);
     border-radius: 0;
@@ -291,6 +292,7 @@ html { scroll-behavior: smooth; }
     background: #0f3266;
     text-align: center;
 }
+
 /* Hiệu ứng xuất hiện khi cuộn */
 .trailer-card {
     opacity: 0;
@@ -506,6 +508,23 @@ body.light-theme {
 .light-theme footer a { color: #0f5bd6; }
 
 </style>
+
+    /* VIP SYSTEM */
+    .vip-item {
+      background: rgba(10,20,40,0.85);
+      border: 2px solid #1f4a8c;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .vip-item:hover {
+      border-color: #58a6ff;
+      box-shadow: 0 0 16px #58a6ff;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
 </head>
 <body>
     <!-- Video background -->
@@ -655,17 +674,19 @@ body.light-theme {
       <!-- Bên phải: Sidebar -->
       <div class="col-lg-4">
         <div class="trailer-card mb-4">
-          <img src="load.jpg" alt="Đang cập nhật">
+          <img src="MV.jpg" alt="Rlife City">
           <div class="caption">
-            <h5>ĐANG CẬP NHẬT</h5>
-            <small>Đang Cập Nhật</small>
+            <h5>RLIFE CITY CANDY SHOP (MV nhạc)</h5>
+            <small>Rlife City</small>
+ <a href="https://youtu.be/SO0evZSmFwA" class="btn btn-sm btn-primary mt-2">Bấm để xem</a>
+
           </div>
         </div>
 <!-- Sidebar bên phải -->
 <div class="col-lg-4">
   <!-- Hình VIP 10 trôi -->
   <div class="vip-box">
-    <img src="vip10.png" alt="VIP 10" class="vip-float">
+    <img src="#" alt="." class="vip-float">
   </div>
 </div>
 
@@ -675,7 +696,68 @@ body.light-theme {
     </div>
   </div>
 </section>
+<section class="section-intro" id="vip-section">
+  <div class="container mt-5">
+    <div class="section-title">HỆ THỐNG VIP</div>
 
+    <div style="display:flex; align-items:center; gap:100px;">
+      <!-- Bên trái: hình VIP to + text -->
+      <div style="background:rgba(0,0,0,0.6); padding:50px; border-radius:20px; text-align:center;">
+        <img id="vip-main-img" src="vip1.png" alt="VIP chính" style="width:500px; height:auto;">
+        <p id="vip-text" style="color:white; margin-top:10px; font-size:23px; font-weight:550;">
+  Bấm vào các icon VIP bên phải để xem quyền lợi
+</p>
+      </div>
+
+      <!-- Bên phải: các VIP nhỏ -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <img src="vip1.png" style="width:60px; cursor:pointer;" onclick="showVip(1)">
+        <img src="vip2.png" style="width:60px; cursor:pointer;" onclick="showVip(2)">
+        <img src="vip3.png" style="width:60px; cursor:pointer;" onclick="showVip(3)">
+        <img src="vip4.png" style="width:60px; cursor:pointer;" onclick="showVip(4)">
+        <img src="vip5.png" style="width:60px; cursor:pointer;" onclick="showVip(5)">
+        <img src="vip6.png" style="width:60px; cursor:pointer;" onclick="showVip(6)">
+        <img src="vip7.png" style="width:60px; cursor:pointer;" onclick="showVip(7)">
+        <img src="vip8.png" style="width:60px; cursor:pointer;" onclick="showVip(8)">
+        <img src="vip9.png" style="width:60px; cursor:pointer;" onclick="showVip(9)">
+        <img src="vip10.png" style="width:60px; cursor:pointer;" onclick="showVip(10)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const vipData = {
+    1: {img:"vip1.png", text:"Quyền lợi VIP 1 khi bạn cống hiến được 5.000.000đ"},
+    2: {img:"vip2.png", text:"Quyền lợi VIP 2 khi bạn cống hiến được 10.000.000đ"},
+    3: {img:"vip3.png", text:"Quyền lợi VIP 3 khi bạn cống hiến được 15.000.000đ"},
+    4: {img:"vip4.png", text:"Quyền lợi VIP 4 khi bạn cống hiến được 20.000.000đ"},
+   5: {img:"vip5.png", text:"Quyền lợi VIP 5 khi bạn cống hiến được 25.000.000đ\n🏅Phần thưởng: Lamborghini Centenario"},
+
+    6: {img:"vip6.png", text:"Quyền lợi VIP 6 khi bạn cống hiến được 30.000.000đ"},
+    7: {img:"vip7.png", text:"Quyền lợi VIP 7 khi bạn cống hiến được 35.000.000đ\n🏅Phần thưởng: Quần Áo Độc Quyền"},
+
+
+    8: {img:"vip8.png", text:"Quyền lợi VIP 8 khi bạn cống hiến được 40.000.000đ"},
+    9: {img:"vip9.png", text:"Quyền lợi VIP 9 khi bạn cống hiến được 45.000.000đ"},
+    10:{img:"vip10.png", text:"Quyền lợi VIP 10 khi bạn cống hiến được 50.000.000đ\n🏅Phần thưởng: Ferrari Daytona SP3 Bản Đặc Biệt Vip 10, Quần Áo Độc Quyền "},
+
+
+  };
+
+  function showVip(id) {
+    document.getElementById("vip-main-img").src = vipData[id].img;
+    document.getElementById("vip-text").innerText = vipData[id].text;
+  }
+
+
+
+
+</script>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section-trailer" id="trailer-section">
     <div class="container mt-5">
@@ -741,7 +823,39 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
     </div>
   </div>
 </section>
-
+<section class="section-intro" id="mv-section">
+  <div class="container mt-5">
+    <div class="section-title text-center">MV MỚI RA MẮT</div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="trailer-card text-center" style="position:relative; overflow:hidden;">
+          <!-- Hình nền MV -->
+          <a href="https://youtu.be/SO0evZSmFwA" target="_blank" style="display:block; position:relative;">
+            <img src="MV.jpg" alt="RLIFE CITY MV" style="width:100%; height:auto; border-radius:8px;">
+            <!-- Nút Play ở giữa -->
+            <div style="
+              position:absolute; 
+              top:50%; left:50%; 
+              transform:translate(-50%,-50%);
+              background:rgba(0,0,0,0.6);
+              border-radius:50%;
+              width:80px; height:80px;
+              display:flex; align-items:center; justify-content:center;
+              box-shadow:0 0 20px rgba(255,255,255,0.6);
+            ">
+              <i class="fa fa-play" style="color:white; font-size:2rem; margin-left:6px;"></i>
+            </div>
+          </a>
+          <!-- Caption -->
+          <div class="caption">
+            <h5>RLIFE CITY CANDY SHOP (MV nhạc)</h5>
+            <small>Bấm để xem trên YouTube</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <footer class="mt-5 text-center py-4">
     <div class="container">
         <div class="mb-2">
@@ -1075,19 +1189,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("online-count", el.textContent);
   }
 
-  // Sau mỗi 60 giây thì random lại và lưu
-  setInterval(() => {
-    const newNumber = randomOnline();
-    el.textContent = newNumber;
-    localStorage.setItem("online-count", newNumber);
-  }, 120000);
-});
 </script>
 <!-- Floating Event Logo -->
 <div id="event-logo">
   <img src="logo.png" alt="Event Logo">
-  <button class="close-btn">&times;</button>
-</div>
+  </div>
 
 <style>
 #event-logo {
@@ -1142,11 +1248,29 @@ document.addEventListener("DOMContentLoaded", () => {
     eventLogo.style.display = "none";
   });
 });
+<script>
+const vipData = {
+  1: {img:"vip1.png", title:"VIP 1", desc:"Quyền lợi VIP 1"},
+  2: {img:"vip2.png", title:"VIP 2", desc:"Quyền lợi VIP 2"},
+  3: {img:"vip3.png", title:"VIP 3", desc:"Quyền lợi VIP 3"},
+  4: {img:"vip4.png", title:"VIP 4", desc:"Quyền lợi VIP 4"},
+  5: {img:"vip5.png", title:"VIP 5", desc:"Quyền lợi VIP 5"},
+  6: {img:"vip6.png", title:"VIP 6", desc:"Quyền lợi VIP 6"},
+  7: {img:"vip7.png", title:"VIP 7", desc:"Quyền lợi VIP 7"},
+  8: {img:"vip8.png", title:"VIP 8", desc:"Quyền lợi VIP 8"},
+  9: {img:"vip9.png", title:"VIP 9", desc:"Quyền lợi VIP 9"},
+ 10: {img:"vip10.png", title:"VIP 10", desc:"Quyền lợi VIP 10"}
+};
+
+function showVip(id) {
+  document.getElementById("vip-main-img").src = vipData[id].img;
+  document.getElementById("vip-main-title").textContent = vipData[id].title;
+  document.getElementById("vip-main-desc").textContent = vipData[id].desc;
+}
 </script>
 
 </body>
 </html>
-
 
 
 
