@@ -87,7 +87,7 @@ html { scroll-behavior: smooth; }
         }
         .navbar-brand {
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 3rem;
             letter-spacing: 2px;
             color: #f8f401 !important;
             text-shadow: 0 0 24px #58a6ff, 0 0 8px #fff;
@@ -230,37 +230,59 @@ html { scroll-behavior: smooth; }
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 12px #58a6ff;
         }
-        .trailer-card {
-            background: rgba(10, 20, 40, 0.85);
-            border-radius: 12px;
-            overflow: hidden;
-            width: 350px;
-            box-shadow: 0 2px 12px #0f3266;
-            border: 2px solid #1f4a8c;
-            transition: 0.3s;
-        }
+.trailer-card {
+    background: rgba(10, 20, 40, 0.9);
+    border-radius: 0;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 25px rgba(88,166,255,0.4);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
 
-        .trailer-card:hover {
-            transform: scale(1.06);
-            border-color: #58a6ff;
-            box-shadow: 0 0 22px #58a6ff;
-            background: rgba(15, 50, 102, 0.9);
-        }
-        .trailer-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: 0.3s;
-        }
-        .trailer-card:hover img {
-            transform: scale(1.05);
-        }
-        .trailer-card .caption {
-            padding: 0.7rem 1rem;
-            font-weight: bold;
-            color: #fff;
-            background: #0f3266;
-            text-align: center;
+.trailer-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #58a6ff;
+    filter: blur(6px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+.trailer-card:hover {
+    transform: scale(1.05);
+    border-color: #58a6ff;
+    box-shadow: 0 0 26px #58a6ff;
+    background: rgba(15, 50, 102, 0.9);
+}
+
+.trailer-card img {
+    width: 100%;
+    height: 220px; /* tăng chiều cao ảnh */
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.trailer-card .caption {
+    padding: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #0f3266;
+    text-align: center;
+    font-size: 1.rem; /* chữ to hơn */
+}
+
+.trailer-card .caption small {
+    font-weight: normal;
+    color: #ddd;
+    display: block;
+    margin-top: 4px;
+}
+
         }
 .trailer-card .caption {
     padding: 0.7rem 1rem;
@@ -273,7 +295,7 @@ html { scroll-behavior: smooth; }
 .trailer-card {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .trailer-card.visible {
@@ -286,7 +308,7 @@ html { scroll-behavior: smooth; }
 .trailer-list {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* chỉnh khoảng cách theo ý bạn, ví dụ 15px hay 30px */
+    gap: 200px; /* chỉnh khoảng cách theo ý bạn, ví dụ 15px hay 30px */
 }
 
 /* Hiệu ứng glass + glow tinh chỉnh chung */
@@ -301,10 +323,23 @@ html { scroll-behavior: smooth; }
     100% { text-shadow: 0 0 32px #91eac9, 0 0 12px #fff; }
 }
 .logo-title { animation: subtleGlow 2.6s ease-in-out infinite alternate; }
+/* VIP 10 float animation */
+.vip-float {
+  width: 500px;  /* tăng lên từ 220px -> 300px hoặc 350px */
+ margin-top: 80px; /* thêm margin cho ảnh VIP */
+  animation: vipFloat 1s ease-in-out infinite;
+}
+
+
+@keyframes vipFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
 
 /* Nhẹ nhàng nổi lên xuống cho các box */
 @keyframes floatUpDown { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
-.info-box { animation: floatUpDown 5s ease-in-out infinite; }
+.info-box { animation: floatUpDown 3s ease-in-out infinite; }
 
 /* Ripple cho nút bấm */
 .btn-play { position: relative; overflow: hidden; }
@@ -315,7 +350,7 @@ html { scroll-behavior: smooth; }
     background: rgba(255,255,255,0.45);
     pointer-events: none;
     width: 10px; height: 10px;
-    animation: ripple 0.6s linear;
+    animation: ripple 10s linear;
 }
 @keyframes ripple {
     0% { opacity: 0.6; }
@@ -487,7 +522,7 @@ body.light-theme {
             <i class="fa fa-gear"></i> Cài đặt
         </div>
         <div id="settings-panel" style="display:none; margin-top:8px; background:rgba(10,20,40,0.9); border:2px solid #1f4a8c; border-radius:12px; padding:12px 14px; min-width:220px;">
-            <div style="font-weight:bold; color:#58a6ff; margin-bottom:8px;">Tuỳ chọn hiển thị</div>
+            <div style="font-weight:bold; color:#58a6ff; margin-bottom:20px;">Tuỳ chọn hiển thị</div>
             <label style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
                 <span>Chế độ nhẹ</span>
                 <input type="checkbox" id="toggle-lite" />
@@ -565,52 +600,82 @@ body.light-theme {
         </div>
     </section>
 
-    <section class="section-intro" id="intro-section">
-        <div class="container mt-5">
-  <div class="row">
-    <!-- Cột bên trái: GIỚI THIỆU THÀNH PHỐ -->
-    <div class="col-lg-6">
-      <div class="section-title">GIỚI THIỆU THÀNH PHỐ</div>
-      <div class="trailer-list">
-        <a href="gioithieumaychu.html" target="_blank" class="trailer-card">
-          <img src="gioithieu.png" alt="Trailer 1">
-          <div class="caption">Giới thiệu thành phố</div>
-        </a>
-        <a href="huongdannhapvai.html" class="trailer-card">
-          <img src="cau-hinh-choi-gta-5-4.jpg" alt="Trailer 2">
-          <div class="caption">Hướng dẫn nhập vai</div>
-        </a>
-        <a href="https://www.rlifecity.vn/tao-nhan-vat" target="_blank" class="trailer-card">
-          <img src="chame.png" alt="Trailer 3">
-          <div class="caption">Tạo nhân vật & Công việc đầu tiên</div>
-        </a>
-      </div>
-    </div>
+ <section class="section-intro" id="intro-section">
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Bên trái: Tin tức -->
+      <div class="col-lg-8">
+        <div class="section-title">TIN TỨC MỚI NHẤT</div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="trailer-card">
+              <img src="gioithieu.png" alt="Giới thiệu thành phố">
+              <div class="caption">
+                <h5>GIỚI THIỆU THÀNH PHỐ</h5>
+                <small>Diễn ra từ 1/8 đến 23/8</small><br>
+                <a href="gioithieumaychu.html" class="btn btn-sm btn-primary mt-2">Chi tiết</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="trailer-card">
+              <img src="xitson.png" alt="Đua top xịt sơn">
+              <div class="caption">
+                <h5>SỰ KIỆN ĐUA TOP XỊT SƠN</h5>
+                <small>Chi tiết đua top xịt sơn</small><br>
+                <a href="duatopxitson.html" class="btn btn-sm btn-primary mt-2">Chi tiết</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="trailer-card">
+              <img src="banner.png" alt="Sự kiện bắn súng">
+              <div class="caption">
+                <h5>SỰ KIỆN: SHOOT IT</h5>
+                <small>Chi tiết thi đấu</small>
+             <a href="shootit.html" class="btn btn-sm btn-primary mt-2">Chi tiết</a>
+              </div>
+            </div>
+          </div>
 
-    <!-- Cột bên phải: GIỚI THIỆU -->
-    <div class="col-lg-6">
-      <div class="section-title">GIỚI THIỆU</div>
-      <div class="trailer-list">
-        <a href="duatopxitson.html" target="_blank" class="trailer-card">
-          <img src="xitson.png" alt="Trailer 1">
-          <div class="caption">Sự kiện Đua Top Xịt Sơn</div>
-        </a>
-        <a href="shootit.html" class="trailer-card">
-          <img src="banner.png" alt="Trailer 2">
-          <div class="caption">Sự kiện Shoot It</div>
-        </a>
-        <a href="https://www.rlifecity.vn/tao-nhan-vat" target="_blank" class="trailer-card">
-          <img src="chame.png" alt="Trailer 3">
-          <div class="caption">Đang cập nhật</div>
-        </a>
+          <div class="col-md-6">
+            <div class="trailer-card">
+              <img src="Quoc-khanh-2-9.jpg" alt="Sự kiện quốc khánh">
+              <div class="caption">
+                <h5>SỰ KIỆN QUỐC KHÁNH 2-9</h5>
+                <small>80 năm Quốc khánh</small>
+             <a href="#" class="btn btn-sm btn-primary mt-2">Chi tiết</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bên phải: Sidebar -->
+      <div class="col-lg-4">
+        <div class="trailer-card mb-4">
+          <img src="load.jpg" alt="Đang cập nhật">
+          <div class="caption">
+            <h5>ĐANG CẬP NHẬT</h5>
+            <small>Đang Cập Nhật</small>
+          </div>
+        </div>
+<!-- Sidebar bên phải -->
+<div class="col-lg-4">
+  <!-- Hình VIP 10 trôi -->
+  <div class="vip-box">
+    <img src="vip10.png" alt="VIP 10" class="vip-float">
+  </div>
+</div>
+
+
+        </div>
       </div>
     </div>
   </div>
-</div>
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
+
 
 <section class="section-trailer" id="trailer-section">
     <div class="container mt-5">
@@ -776,7 +841,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
             });
         });
     }
-    attachTilt('.trailer-card');
+   
     attachTilt('.info-box');
     
     // Particles/Nebula background
@@ -1040,28 +1105,26 @@ document.addEventListener("DOMContentLoaded", () => {
   box-shadow: 0 0 20px gold, 0 0 40px orange;
   animation: pulseGlow 2s infinite alternate;
 }
-#event-logo:hover {
-  transform: scale(1.1);
-}
-#event-logo .close-btn {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ff4444;
-  border: none;
-  color: #fff;
+#event-logo img {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  cursor: pointer;
+  box-shadow: 0 0 20px gold, 0 0 40px orange;
+  animation: spin 6s linear infinite, flip 3s ease-in-out infinite;
+ animation: vipFloat 0.5s ease-in-out infinite;
 }
-@keyframes pulseGlow {
-  from { box-shadow: 0 0 12px gold, 0 0 24px orange; }
-  to { box-shadow: 0 0 24px gold, 0 0 48px red; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+
+@keyframes flip {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+}
+
+
 </style>
 
 <script>
