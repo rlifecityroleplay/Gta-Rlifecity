@@ -698,33 +698,32 @@ body.light-theme {
 </section>
 <section class="section-intro" id="vip-section">
   <div class="container mt-5">
-    <div class="section-title">HỆ THỐNG VIP</div>
+    <div class="section-title text-center">HỆ THỐNG VIP</div>
 
-    <div style="display:flex; align-items:center; gap:100px;">
-      <!-- Bên trái: hình VIP to + text -->
-      <div style="background:rgba(0,0,0,0.6); padding:50px; border-radius:20px; text-align:center;">
-        <img id="vip-main-img" src="vip1.png" alt="VIP chính" style="width:500px; height:auto;">
-        <p id="vip-text" style="color:white; margin-top:10px; font-size:23px; font-weight:550;">
-  Bấm vào các icon VIP bên phải để xem quyền lợi
-</p>
-      </div>
+    <!-- Các icon VIP nhỏ nằm ngang -->
+    <div style="display:flex; flex-direction:row; justify-content:center; gap:15px; flex-wrap:wrap; margin:20px 0;">
+      <img src="vip1.png" style="width:60px; cursor:pointer;" onclick="showVip(1)">
+      <img src="vip2.png" style="width:60px; cursor:pointer;" onclick="showVip(2)">
+      <img src="vip3.png" style="width:60px; cursor:pointer;" onclick="showVip(3)">
+      <img src="vip4.png" style="width:60px; cursor:pointer;" onclick="showVip(4)">
+      <img src="vip5.png" style="width:60px; cursor:pointer;" onclick="showVip(5)">
+      <img src="vip6.png" style="width:60px; cursor:pointer;" onclick="showVip(6)">
+      <img src="vip7.png" style="width:60px; cursor:pointer;" onclick="showVip(7)">
+      <img src="vip8.png" style="width:60px; cursor:pointer;" onclick="showVip(8)">
+      <img src="vip9.png" style="width:60px; cursor:pointer;" onclick="showVip(9)">
+      <img src="vip10.png" style="width:60px; cursor:pointer;" onclick="showVip(10)">
+    </div>
 
-      <!-- Bên phải: các VIP nhỏ -->
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <img src="vip1.png" style="width:60px; cursor:pointer;" onclick="showVip(1)">
-        <img src="vip2.png" style="width:60px; cursor:pointer;" onclick="showVip(2)">
-        <img src="vip3.png" style="width:60px; cursor:pointer;" onclick="showVip(3)">
-        <img src="vip4.png" style="width:60px; cursor:pointer;" onclick="showVip(4)">
-        <img src="vip5.png" style="width:60px; cursor:pointer;" onclick="showVip(5)">
-        <img src="vip6.png" style="width:60px; cursor:pointer;" onclick="showVip(6)">
-        <img src="vip7.png" style="width:60px; cursor:pointer;" onclick="showVip(7)">
-        <img src="vip8.png" style="width:60px; cursor:pointer;" onclick="showVip(8)">
-        <img src="vip9.png" style="width:60px; cursor:pointer;" onclick="showVip(9)">
-        <img src="vip10.png" style="width:60px; cursor:pointer;" onclick="showVip(10)">
-      </div>
+    <!-- Hình VIP to + text nằm dưới -->
+    <div style="background:rgba(0,0,0,0.6); padding:50px; border-radius:20px; text-align:center; max-width:600px; margin:auto;">
+      <img id="vip-main-img" src="vip1.png" alt="VIP chính" style="width:500px; height:auto;">
+      <p id="vip-text" style="color:white; margin-top:10px; font-size:23px; font-weight:550;">
+        Bấm vào các icon VIP bên trên để xem quyền lợi
+      </p>
     </div>
   </div>
 </section>
+
 
 <script>
   const vipData = {
@@ -740,7 +739,7 @@ body.light-theme {
 
     8: {img:"vip8.png", text:"Quyền lợi VIP 8 khi bạn cống hiến được 40.000 coin"},
     9: {img:"vip9.png", text:"Quyền lợi VIP 9 khi bạn cống hiến được 45.000 coin"},
-    10:{img:"vip10.png", text:"Quyền lợi VIP 10 khi bạn cống hiến được 50.000 coin\n🏅Phần thưởng: Ferrari Daytona SP3 Bản Đặc Biệt Vip 10, Quần Áo Độc Quyền "},
+    10:{img:"vip10.png", text:"Quyền lợi VIP 10 khi bạn cống hiến được 50.000 coin\n🏅Phần thưởng: Ferrari Daytona SP3 Đặc Biệt Vip 10, Quần Áo Độc Quyền "},
 
 
   };
@@ -825,7 +824,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
 </section>
 <section class="section-intro" id="mv-section">
   <div class="container mt-5">
-    <div class="section-title text-center">MV MỚI RA MẮT</div>
+    <div class="section-title text-center">GIẢI TRÍ</div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="trailer-card text-center" style="position:relative; overflow:hidden;">
@@ -849,7 +848,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
           <!-- Caption -->
           <div class="caption">
             <h5>RLIFE CITY CANDY SHOP (MV nhạc)</h5>
-            <small>Bấm để xem trên YouTube</small>
+            
           </div>
         </div>
       </div>
@@ -1271,7 +1270,6 @@ function showVip(id) {
 
 </body>
 </html>
-
 
 
 
