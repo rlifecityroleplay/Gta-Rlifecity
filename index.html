@@ -165,12 +165,12 @@ html { scroll-behavior: smooth; }
             color: #58a6ff;
             transition: transform 0.2s;
         }
-        .info-box:hover {
-            transform: scale(1.12) rotate(-2deg);
-            border-color: #58a6ff;
-            box-shadow: 0 0 24px #58a6ff;
-            background: rgba(10, 20, 40, 0.95);
-        }
+.btn-play:hover {
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 12px 28px rgba(88, 166, 255, 0.5);
+    background: linear-gradient(135deg, #58a6ff, #91eac9); /* xanh chủ đạo */
+    animation-play-state: paused;
+}
          .btn-play {
              background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
              color: #fff;
@@ -248,14 +248,23 @@ html { scroll-behavior: smooth; }
              text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
          }
 
-         @keyframes btnGlow {
-             0% {
-                 box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
-             }
-             100% {
-                 box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6), 0 0 20px rgba(255, 215, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
-             }
-         }
+@keyframes btnGlow {
+            0% {
+                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            }
+            100% {
+                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6), 0 0 20px rgba(255, 215, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 30px rgba(88, 166, 255, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 50px rgba(88, 166, 255, 0.9), 0 0 80px rgba(145, 234, 201, 0.4);
+            }
+        }
         .city-card {
             background: rgba(10, 20, 40, 0.85);
             border: 2px solid #1f4a8c;
@@ -694,6 +703,7 @@ body.light-theme {
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a href="#main-section" class="nav-link active">Trang chủ</a></li>
                     <li class="nav-item"><a href="#intro-section" class="nav-link">Tin tức</a></li>
+                    <li class="nav-item"><a href="#recruitment-section" class="nav-link">Tuyển dụng</a></li>
                     <li class="nav-item"><a href="https://sites.google.com/view/rlifecom" target="_blank" rel="noopener" class="nav-link">Luật Máy chủ</a></li>
                     <li class="nav-item"><a href="#about-section" class="nav-link">Đăng nhập</a></li>
                 </ul>
@@ -883,53 +893,81 @@ body.light-theme {
   </div>
 </section>
 
-<section class="section-trailer" id="trailer-section">
-    <div class="container mt-5">
-        <div class="section-title text-center">THAM GIA NGAY !!</div>
-        <div class="row justify-content-center">
-            <!-- Bước 1 -->
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
-                    <div>
-                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 1</div>
-                        <div style="font-size:1.3rem;font-weight:bold;">TẢI VÀ CÀI ĐẶT GTA5</div>
-                        <div class="mt-3" style="color:#ccc;">
-                            Nếu bạn có bản quyền: Bạn có thể tải trên steam, epic games hoặc tải ở đây
-                        </div>
-                    </div>
-                    <a href="https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V_Enhanced/?snr=1_7_7_151_150_1"
-                       target="_blank" class="btn-play mt-3">TẢI GAME GỐC</a>
-                </div>
+<!-- Section Tuyển dụng cảnh sát -->
+<section class="section-intro" id="recruitment-section">
+  <div class="container mt-5">
+    <div class="section-title text-center">TUYỂN DỤNG CẢNH SÁT</div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="trailer-card text-center" style="background: linear-gradient(145deg, rgba(10, 20, 40, 0.95), rgba(15, 30, 50, 0.9)); border: 2px solid #1f4a8c; border-radius: 20px; padding: 3rem;">
+          
+          <!-- Logo LSPD -->
+          <div style="margin-bottom: 2rem;">
+            <img src="lspd.png" alt="LSPD RLIFE CITY" style="width:220px; border-radius:15px; box-shadow:0 0 35px rgba(88,166,255,0.7); animation:pulseGlow 2s infinite alternate;">
+          </div>
+          
+          <!-- Tiêu đề -->
+          <h2 style="
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            color: #58a6ff; 
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #58a6ff;
+          ">
+            LOS SANTOS POLICE DEPARTMENT
+          </h2>
+          
+          <!-- Mô tả -->
+          <p style="font-size: 1.2rem; color: #ddd; margin-bottom: 2rem; line-height: 1.6;">
+            Tham gia lực lượng cảnh sát Los Santos và bảo vệ công lý cho thành phố. 
+            Chúng tôi đang tìm kiếm những ứng viên tận tâm, có trách nhiệm và sẵn sàng phục vụ cộng đồng.
+          </p>
+          
+          <!-- Thông tin tuyển dụng -->
+          <div style="background: rgba(15, 50, 102, 0.8); border-radius: 15px; padding: 2rem; margin: 2rem 0; border: 1px solid #1f4a8c;">
+            <h4 style="color: #58a6ff; margin-bottom: 1.5rem; font-size: 1.5rem;">
+              <i class="fa fa-info-circle" style="margin-right: 10px;"></i>
+              THÔNG TIN TUYỂN DỤNG
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; text-align: left;">
+              <div style="color: #fff;">
+                <strong style="color: #91eac9;">📋 Yêu cầu:</strong><br>
+                • Tuổi từ 18 trở lên<br>
+                • Có kinh nghiệm roleplay<br>
+                • Thái độ tích cực
+              </div>
+              <div style="color: #fff;">
+                <strong style="color: #91eac9;">⏰ Thời gian:</strong><br>
+                • Tuyển dụng 24/7<br>
+                • Phỏng vấn linh hoạt<br>
+                • Đào tạo miễn phí
+              </div>
+              <div style="color: #fff;">
+                <strong style="color: #91eac9;">🎯 Quyền lợi:</strong><br>
+                • Trang bị chuyên nghiệp<br>
+                • Hỗ trợ từ đồng nghiệp<br>
+                • Cơ hội thăng tiến
+              </div>
             </div>
-            <!-- Bước 2 -->
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
-                    <div>
-                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 2</div>
-                        <div style="font-size:1.3rem;font-weight:bold;">CÀI ĐẶT LAUNCHER</div>
-                        <div class="mt-3" style="color:#ccc;">
-                            Để có thể kết nối đến máy chủ của chúng tôi. Bạn phải cài đặt launcher ở bên dưới
-                        </div>
-                    </div>
-                    <a href="RLife.exe" download class="btn-play mt-3">TẢI LAUNCHER</a>
-                </div>
-            </div>
-            <!-- Bước 3 -->
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="trailer-card text-center d-flex flex-column justify-content-between w-100">
-                    <div>
-                        <div style="font-size:2rem;font-weight:bold;color:#58a6ff;">BƯỚC 3</div>
-                        <div style="font-size:1.3rem;font-weight:bold;">THAM GIA DISCORD</div>
-                        <div class="mt-3" style="color:#ccc;">
-                            Vui lòng tham gia discord của chúng tôi để được hỗ trợ nhanh chóng và kịp thời
-                        </div>
-                    </div>
-                    <a href="https://discord.gg/Z86msdRTD9" target="_blank" class="btn-play mt-3">THAM GIA</a>
-                </div>
-            </div>
+          </div>
+          
+          <!-- Nút tham gia Discord -->
+          <a href="https://discord.gg/c77rUvYD3Q" target="_blank" class="btn-play" style="margin-top:1rem;">
+            <i class="fab fa-discord" style="margin-right: 10px;"></i>
+            THAM GIA NGAY
+          </a>
+          
+          <!-- Thông tin bổ sung -->
+          <div style="margin-top: 2rem; color: #aaa; font-size: 0.9rem;">
+            <i class="fa fa-clock" style="margin-right: 5px;"></i>
+            Tuyển dụng 24/24 - Liên hệ ngay để được hỗ trợ
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
+
 
 <section class="section-about py-5" id="about-section">
   <div class="container d-flex flex-column flex-md-row align-items-center">
@@ -1372,42 +1410,7 @@ document.addEventListener("DOMContentLoaded", () => {
     eventLogo.style.display = "none";
   });
 });
-<script>
-const vipData = {
-  1: {img:"vip1.png", title:"VIP 1", desc:"Quyền lợi VIP 1"},
-  2: {img:"vip2.png", title:"VIP 2", desc:"Quyền lợi VIP 2"},
-  3: {img:"vip3.png", title:"VIP 3", desc:"Quyền lợi VIP 3"},
-  4: {img:"vip4.png", title:"VIP 4", desc:"Quyền lợi VIP 4"},
-  5: {img:"vip5.png", title:"VIP 5", desc:"Quyền lợi VIP 5"},
-  6: {img:"vip6.png", title:"VIP 6", desc:"Quyền lợi VIP 6"},
-  7: {img:"vip7.png", title:"VIP 7", desc:"Quyền lợi VIP 7"},
-  8: {img:"vip8.png", title:"VIP 8", desc:"Quyền lợi VIP 8"},
-  9: {img:"vip9.png", title:"VIP 9", desc:"Quyền lợi VIP 9"},
- 10: {img:"vip10.png", title:"VIP 10", desc:"Quyền lợi VIP 10"}
-};
-
-function showVip(id) {
-  document.getElementById("vip-main-img").src = vipData[id].img;
-  document.getElementById("vip-main-title").textContent = vipData[id].title;
-  document.getElementById("vip-main-desc").textContent = vipData[id].desc;
-}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
