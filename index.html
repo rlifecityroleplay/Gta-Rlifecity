@@ -417,7 +417,7 @@ html { scroll-behavior: smooth; }
     color: #fff;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .trailer-card .caption .btn:hover {
@@ -431,7 +431,7 @@ html { scroll-behavior: smooth; }
 .trailer-card {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .trailer-card.visible {
@@ -458,7 +458,7 @@ html { scroll-behavior: smooth; }
     0% { text-shadow: 0 0 18px #58a6ff, 0 0 8px #fff; }
     100% { text-shadow: 0 0 32px #91eac9, 0 0 12px #fff; }
 }
-.logo-title { animation: subtleGlow 2.6s ease-in-out infinite alternate; }
+.logo-title { animation: subtleGlow 1.6s ease-in-out infinite alternate; }
 /* VIP 10 float animation */
 .vip-float {
   width: 500px;  /* tăng lên từ 220px -> 300px hoặc 350px */
@@ -489,12 +489,12 @@ html { scroll-behavior: smooth; }
     animation: ripple 10s linear;
 }
 @keyframes ripple {
-    0% { opacity: 0.6; }
+    0% { opacity: 0.1; }
     100% { width: 300px; height: 300px; opacity: 0; }
 }
 
 /* Reveal hiệu ứng dùng chung */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.3s ease, transform 0.1s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
         footer {
@@ -505,7 +505,7 @@ html { scroll-behavior: smooth; }
         }
         footer a {
             color: #58a6ff;
-            transition: 0.3s;
+            transition: 0.1s;
         }
    footer a:hover {
             color: #fff;
@@ -739,10 +739,10 @@ body.light-theme {
                 <div class="roleplay-title mb-4">ROLEPLAY</div>
                 <div class="mb-2" style="font-size:1.2rem;">LOS SANTOS - Roleplay City</div>
                 <div class="info-boxes">
-                    <div class="info-box"><i class="fa fa-users"></i><br>Tổng<br><span style="font-size:2rem;">1273</span></div>
+                    <div class="info-box"><i class="fa fa-users"></i><br>Tổng<br><span style="font-size:2rem;">1294</span></div>
                     <div class="info-box">
   <i class="fa fa-signal"></i><br>Online<br>
-  <span id="online-count" style="font-size:2rem;">298</span>
+  <span id="online-count" style="font-size:2rem;">37</span>
 </div>
                     <div class="info-box"><i class="fa fa-server"></i><br>Server<br><span style="font-size:2rem;">RLIFE CITY</span></div>
                 </div>
@@ -1141,8 +1141,8 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
         window.addEventListener('scroll', reveal);
         reveal();
     }
-    doReveal('.trailer-card', 0.85, 150);
-    doReveal('.reveal', 0.9, 120);
+    doReveal('.trailer-card', 0.85, 20);
+    doReveal('.reveal', 0.9, 20);
 
     // Parallax tilt for cards
     function attachTilt(selector, maxTilt = 8) {
@@ -1321,7 +1321,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
   <ol class="crew-list">
     <li><span class="rank gold">1</span> 911</li>
     <li><span class="rank silver">2</span> GIA TỘC HỌ LÊ</li>
-    <li><span class="rank bronze">3</span>  RISE IN POWER</li>
+    <li><span class="rank bronze">3</span> RISE IN POWER</li>
     <li><span class="rank">4</span> VIP</li>
     <li><span class="rank">5</span> XXX</li>
   </ol>
@@ -1455,6 +1455,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  function randomOnline() {
+    const min = 168;  // số nhỏ nhất
+    const max = 400;  // số lớn nhất
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  const el = document.getElementById("online-count");
+  if (!el) return;
+
+  // Nếu localStorage đã có số thì dùng lại
+  let currentOnline = localStorage.getItem("online-count");
+  if (currentOnline) {
+    el.textContent = currentOnline;
+  } else {
+    // lần đầu chưa có thì giữ nguyên số HTML ban đầu (37)
+    localStorage.setItem("online-count", el.textContent);
+  }
+
+  // Sau mỗi 60 giây thì random lại và lưu
+  setInterval(() => {
+    const newNumber = randomOnline();
+    el.textContent = newNumber;
+    localStorage.setItem("online-count", newNumber);
+  }, 120000);
+});
+</script>
 </body>
 </html>
-
