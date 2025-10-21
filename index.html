@@ -585,6 +585,128 @@ html { scroll-behavior: smooth; }
   color: #000;
 }
     
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a1428 0%, #1a2a4a 50%, #0a1428 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-container {
+    text-align: center;
+    color: #fff;
+    max-width: 500px;
+    width: 90%;
+}
+
+.loading-logo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #58a6ff, 0 0 60px #58a6ff;
+    animation: logoGlow 2s ease-in-out infinite alternate;
+    margin-bottom: 20px;
+}
+
+@keyframes logoGlow {
+    from { 
+        box-shadow: 0 0 30px #58a6ff, 0 0 60px #58a6ff;
+        transform: scale(1);
+    }
+    to { 
+        box-shadow: 0 0 50px #91eac9, 0 0 80px #91eac9;
+        transform: scale(1.05);
+    }
+}
+
+.loading-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f8f401;
+    text-shadow: 0 0 20px #58a6ff;
+    margin-bottom: 10px;
+    animation: titleGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { 
+        text-shadow: 0 0 20px #58a6ff;
+        color: #f8f401;
+    }
+    to { 
+        text-shadow: 0 0 40px #91eac9, 0 0 60px #91eac9;
+        color: #91eac9;
+    }
+}
+
+.loading-subtitle {
+    font-size: 1.2rem;
+    color: #58a6ff;
+    margin-bottom: 40px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.loading-bar-container {
+    margin-top: 30px;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #58a6ff, #91eac9, #ffd700);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s ease;
+    position: relative;
+    box-shadow: 0 0 10px #58a6ff;
+}
+
+.loading-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+.loading-percentage {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #58a6ff;
+    text-shadow: 0 0 10px #58a6ff;
+}
+
 /* Video background */
 #bg-video {
     position: fixed;
@@ -661,13 +783,33 @@ body.light-theme {
 </head>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <img src="logo.png" alt="RLIFE CITY Logo" />
+                <div class="loading-title">RLIFE CITY</div>
+                <div class="loading-subtitle">Đang tải...</div>
+            </div>
+            <div class="loading-bar-container">
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loading-progress"></div>
+                </div>
+                <div class="loading-percentage" id="loading-percentage">0%</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Video background -->
-    <video autoplay muted loop id="bg-video">
+    <video autoplay muted loop id="bg-video" style="display: none;">
         <source src="Comp 1.mp4" type="video/mp4">
         Trình duyệt của bạn không hỗ trợ video nền.
     </video>
     <!-- Particles/Nebula Canvas -->
     <canvas id="bg-canvas"></canvas>
+    
+    <!-- Main Content Container (hidden during loading) -->
+    <div id="main-content" style="display: none;">
     
     <!-- Floating Settings Toggle -->
     <div id="settings-toggle" class="reveal" style="position:fixed; right:20px; bottom:20px; z-index:1000;">
@@ -821,7 +963,7 @@ body.light-theme {
 <div class="col-lg-4">
   <!-- Hình VIP 10 trôi -->
   <div class="vip-box">
-    <img src="#" alt="." class="vip-float">
+    <img src="vip10.png" alt="." class="vip-float">
   </div>
 </div>
 
@@ -1083,6 +1225,118 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+    // Loading Screen Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingProgress = document.getElementById('loading-progress');
+        const loadingPercentage = document.getElementById('loading-percentage');
+        const bgVideo = document.getElementById('bg-video');
+        
+        let loadingProgressValue = 0;
+        let isVideoLoaded = false;
+        let isPageLoaded = false;
+        let isLoadingComplete = false;
+        
+        // Disable smooth scroll during loading
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        // Ensure page starts at top and prevent any scroll events during loading
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+        
+        // Set global flag to prevent other scripts from interfering
+        window.isLoading = true;
+        
+        // Simulate loading progress for smooth animation
+        function updateProgress(progress) {
+            loadingProgressValue = Math.min(progress, 100);
+            loadingProgress.style.width = loadingProgressValue + '%';
+            loadingPercentage.textContent = Math.round(loadingProgressValue) + '%';
+            
+            // Hide loading screen when both video and page are loaded
+            if (loadingProgressValue >= 100 && isVideoLoaded && isPageLoaded) {
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        // Show video background and main content
+                        bgVideo.style.display = 'block';
+                        document.getElementById('main-content').style.display = 'block';
+                        bgVideo.play().catch(e => console.log('Video autoplay failed:', e));
+                        
+                        // Re-enable scroll and ensure page stays at top
+                        document.body.style.overflow = '';
+                        isLoadingComplete = true;
+                        window.isLoading = false;
+                        window.scrollTo(0, 0);
+                        setTimeout(() => {
+                            document.documentElement.style.scrollBehavior = 'smooth';
+                            window.scrollTo(0, 0); // Double ensure we're at top
+                        }, 100);
+                    }, 500);
+                }, 500);
+            }
+        }
+        
+        // Track video loading progress
+        bgVideo.addEventListener('loadeddata', function() {
+            isVideoLoaded = true;
+            updateProgress(loadingProgressValue + 30);
+        });
+        
+        bgVideo.addEventListener('canplaythrough', function() {
+            updateProgress(loadingProgressValue + 20);
+        });
+        
+        bgVideo.addEventListener('loadstart', function() {
+            updateProgress(10);
+        });
+        
+        bgVideo.addEventListener('progress', function() {
+            if (bgVideo.buffered.length > 0) {
+                const buffered = bgVideo.buffered.end(bgVideo.buffered.length - 1);
+                const duration = bgVideo.duration;
+                if (duration > 0) {
+                    const videoProgress = (buffered / duration) * 50; // 50% for video loading
+                    updateProgress(30 + videoProgress);
+                }
+            }
+        });
+        
+        // Track page loading
+        window.addEventListener('load', function() {
+            isPageLoaded = true;
+            updateProgress(Math.max(loadingProgressValue, 80));
+            
+            // Ensure we reach 100% even if video loads faster
+            if (loadingProgressValue < 100) {
+                setTimeout(() => updateProgress(100), 1000);
+            }
+        });
+        
+        // Fallback: ensure loading completes even if events don't fire properly
+        setTimeout(() => {
+            if (loadingProgressValue < 90) {
+                updateProgress(100);
+            }
+        }, 10000); // 10 seconds max loading time
+        
+        // Start loading animation
+        let simulatedProgress = 0;
+        const loadingInterval = setInterval(() => {
+            if (simulatedProgress < 30 && !isVideoLoaded) {
+                simulatedProgress += Math.random() * 3;
+                updateProgress(simulatedProgress);
+            } else {
+                clearInterval(loadingInterval);
+            }
+        }, 100);
+        
+        // Force video to start loading
+        bgVideo.load();
+    });
+    </script>
+    <script>
     // Smooth anchor scrolling offset for fixed navbar
     document.addEventListener('click', function(e){
         const a = e.target.closest('a[href^="#"]');
@@ -1103,6 +1357,9 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
 
     // Active section glow
     document.addEventListener('scroll', function() {
+        // Skip scroll events during loading
+        if (window.isLoading) return;
+        
         document.querySelectorAll('section').forEach(section => {
             const rect = section.getBoundingClientRect();
             if(rect.top < window.innerHeight/2 && rect.bottom > window.innerHeight/2) {
@@ -1130,6 +1387,9 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
     function doReveal(selector, threshold = 0.85, stagger = 120) {
         const items = Array.from(document.querySelectorAll(selector));
         function reveal() {
+            // Skip reveal during loading
+            if (window.isLoading) return;
+            
             const trigger = window.innerHeight * threshold;
             items.forEach((el, idx) => {
                 const top = el.getBoundingClientRect().top;
@@ -1319,11 +1579,11 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
 <div class="crew-fixed">
   <div class="crew-header">TOP CREW</div>
   <ol class="crew-list">
-    <li><span class="rank gold">1</span> GIA TỘC HỌ LÊ</li>
-    <li><span class="rank silver">2</span> FIB</li>
+    <li><span class="rank gold">1</span> 911</li>
+    <li><span class="rank silver">2</span> GIA TỘC HỌ LÊ</li>
     <li><span class="rank bronze">3</span> RISE IN POWER</li>
-    <li><span class="rank">4</span> TRAPPER</li>
-    <li><span class="rank">5</span> 911</li>
+    <li><span class="rank">4</span> VIP</li>
+    <li><span class="rank">5</span> XXX</li>
   </ol>
 </div>
 <script>
@@ -1393,7 +1653,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // lần đầu chưa có thì giữ nguyên số HTML ban đầu (37)
     localStorage.setItem("online-count", el.textContent);
   }
-
+});
 </script>
 <!-- Floating Event Logo -->
 <div id="event-logo">
@@ -1441,17 +1701,23 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const eventLogo = document.getElementById("event-logo");
-  const closeBtn = eventLogo.querySelector(".close-btn");
+  
+  if (eventLogo) {
+    const closeBtn = eventLogo.querySelector(".close-btn");
 
-  eventLogo.addEventListener("click", () => {
-    // khi bấm logo thì mở vòng quay sự kiện
-    window.location.href = "vqmm.html"; 
-  });
+    eventLogo.addEventListener("click", () => {
+      // khi bấm logo thì mở vòng quay sự kiện
+      window.location.href = "vqmm.html"; 
+    });
 
-  closeBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    eventLogo.style.display = "none";
-  });
+    // closeBtn có thể không tồn tại, kiểm tra trước khi thêm event listener
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        eventLogo.style.display = "none";
+      });
+    }
+  }
 });
 </script>
 
@@ -1483,6 +1749,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 120000);
 });
 </script>
+    </div> <!-- End main-content -->
 </body>
 </html>
-
