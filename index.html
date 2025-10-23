@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <!-- Halloween Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Butcherman&family=Eater&display=swap" rel="stylesheet">
     <style>
 html { scroll-behavior: smooth; }
 .section-about {
@@ -23,8 +25,10 @@ html { scroll-behavior: smooth; }
 .about-title {
   font-size: 3rem;
   font-weight: bold;
-  color: #f8f401;
-  text-shadow: 0 0 20px #f7f200;
+  font-family: 'Creepster', cursive;
+  color: #fbff00;
+  text-shadow: 0 0 20px #e5ff00, 0 0 40px #85cc00, 3px 3px 6px #000;
+  letter-spacing: 3px;
 }
 
 .about-sub {
@@ -89,23 +93,35 @@ html { scroll-behavior: smooth; }
             font-weight: bold;
             font-size: 3rem;
             letter-spacing: 2px;
-            color: #f8f401 !important;
-            text-shadow: 0 0 24px #58a6ff, 0 0 8px #fff;
-            animation: glow 2s infinite alternate;
+            font-family: 'Nosifer', cursive;
+            color: #fbff00 !important;
+            text-shadow: 0 0 24px #ffd000, 0 0 8px #000, 4px 4px 8px #000;
+            animation: halloweenGlow 2s infinite alternate;
         }
         @keyframes glow {
             from { text-shadow: 0 0 24px #58a6ff, 0 0 8px #fff; }
             to { text-shadow: 0 0 48px #91eac9, 0 0 16px #fff; }
+        }
+        @keyframes halloweenGlow {
+            from { 
+                text-shadow: 0 0 24px #ffd000, 0 0 8px #000, 4px 4px 8px #000; 
+                filter: drop-shadow(0 0 10px #d0ff00);
+            }
+            to { 
+                text-shadow: 0 0 48px #eeff00, 0 0 16px #becc00, 6px 6px 12px #000; 
+                filter: drop-shadow(0 0 10px #fffb00);
+            }
         }
         .nav-link {
             color: #dcdcdc !important;
             font-weight: 600;
             margin-right: 1rem;
             transition: color 0.2s, text-shadow 0.2s;
+            font-family: 'Rubik', sans-serif;
         }
         .nav-link.active, .nav-link:hover {
-            color: #58a6ff !important;
-            text-shadow: 0 2px 12px #58a6ff;
+            color: #ffffff !important;
+            
             transform: scale(1.08);
         }
 /* Hiệu ứng lắc + sáng icon */
@@ -119,8 +135,8 @@ html { scroll-behavior: smooth; }
 
 .nav-link i:hover,
 .info-box i:hover {
-  color: #ffcc00; /* hoặc #58a6ff nếu muốn đồng bộ theme */
-  text-shadow: 0 0 12px #ffcc00, 0 0 20px #ff6600;
+  color: #ff6600;
+  text-shadow: 0 0 12px #ff6600, 0 0 20px #cc0000;
   animation: shake 0.5s ease-in-out;
 }
 
@@ -128,15 +144,17 @@ html { scroll-behavior: smooth; }
             font-size: 10rem;
             font-weight: 900;
             letter-spacing: 4px;
-            color: #ebfc00;
-            text-shadow: 0 0 32px #58a6ff, 0 0 12px #fff;
-            animation: glow 2s infinite alternate;
+            font-family: 'Creepster', cursive;
+            color: #ff6600;
+            text-shadow: 0 0 32px #ff3300, 0 0 12px #cc0000, 5px 5px 10px #000, 0 8px 0 #660000;
+            animation: halloweenGlow 2s infinite alternate;
         }
         .roleplay-title {
             font-size: 2.2rem;
             font-weight: 700;
-            color: #58a6ff;
-            text-shadow: 0 0 16px #58a6ff;
+            font-family: 'Butcherman', cursive;
+            color: #9b30ff;
+            text-shadow: 0 0 16px #9b30ff, 0 0 30px #660099, 3px 3px 6px #000;
             letter-spacing: 2px;
         }
         .info-boxes {
@@ -162,7 +180,8 @@ html { scroll-behavior: smooth; }
         .info-box i {
             font-size: 1.7rem;
             margin-bottom: 0.5rem;
-            color: #58a6ff;
+            color: #ff6600;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
             transition: transform 0.2s;
         }
 .btn-play:hover {
@@ -281,9 +300,8 @@ html { scroll-behavior: smooth; }
             transition: 0.3s;
         }
         .city-card:hover {
-            border-color: #58a6ff;
-            box-shadow: 0 0 22px #58a6ff;
-            transform: scale(1.08);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             background: #0f3266;
         }
         .arrow-next {
@@ -301,9 +319,13 @@ html { scroll-behavior: smooth; }
         .section-title {
             font-size: 3rem;
             font-weight: bold;
-            color: #58a6ff;
+            font-family: 'Creepster', cursive !important;
+            color: #ff6600;
             margin-bottom: 1.5rem;
-            text-shadow: 0 2px 12px #58a6ff;
+            text-shadow: 0 2px 12px #ff3300, 0 0 30px #cc0000, 4px 4px 8px #000;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 10;
         }
 
 .trailer-card {
@@ -344,14 +366,14 @@ html { scroll-behavior: smooth; }
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(88, 166, 255, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
 .trailer-card:hover::before {
-    opacity: 1;
+    opacity: 0;
 }
 
 .trailer-card:hover::after {
@@ -359,8 +381,8 @@ html { scroll-behavior: smooth; }
 }
 
 .trailer-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(88, 166, 255, 0.4), 0 0 60px rgba(255, 215, 0, 0.2);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     background: linear-gradient(145deg, rgba(15, 30, 50, 0.95), rgba(20, 40, 60, 0.9));
 }
 
@@ -391,12 +413,14 @@ html { scroll-behavior: smooth; }
 .trailer-card .caption h5 {
     font-size: 1.3rem;
     font-weight: 800;
+    font-family: 'Butcherman', cursive;
     margin-bottom: 0.8rem;
-    background: linear-gradient(135deg, #58a6ff, #91eac9);
+    background: linear-gradient(135deg, #ff6600, #9b30ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: none;
+    filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.5));
 }
 
 .trailer-card .caption small {
@@ -533,12 +557,13 @@ html { scroll-behavior: smooth; }
 
 .crew-header {
   font-weight: bold;
-  color: #58a6ff;
+  font-family: 'Butcherman', cursive;
+  color: #ff6600;
   margin-bottom: 8px;
   text-align: center;
   font-size: 1rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 8px #58a6ff;
+  text-shadow: 0 0 8px #ff6600, 0 0 16px #cc0000;
 }
 
 .crew-list {
@@ -585,126 +610,209 @@ html { scroll-behavior: smooth; }
   color: #000;
 }
     
-/* Loading Screen Styles */
+/* Loading Screen Styles - Professional Design */
 #loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a1428 0%, #1a2a4a 50%, #0a1428 100%);
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
     transition: opacity 0.5s ease-out;
+    overflow: hidden;
 }
 
 .loading-container {
     text-align: center;
     color: #fff;
-    max-width: 500px;
+    max-width: 600px;
     width: 90%;
+    position: relative;
+    z-index: 2;
+    padding: 80px 20px;
+}
+
+.loading-logo {
+    margin-bottom: 30px;
 }
 
 .loading-logo img {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    box-shadow: 0 0 30px #58a6ff, 0 0 60px #58a6ff;
-    animation: logoGlow 2s ease-in-out infinite alternate;
-    margin-bottom: 20px;
+    box-shadow: 0 0 40px rgba(88, 166, 255, 0.6), 
+                0 0 80px rgba(88, 166, 255, 0.4),
+                0 0 120px rgba(145, 234, 201, 0.2);
+    animation: logoGlow 2.5s ease-in-out infinite alternate;
+    border: 3px solid rgba(88, 166, 255, 0.3);
+    padding: 5px;
+    background: rgba(10, 20, 40, 0.5);
 }
 
 @keyframes logoGlow {
-    from { 
-        box-shadow: 0 0 30px #58a6ff, 0 0 60px #58a6ff;
-        transform: scale(1);
+    0% { 
+        box-shadow: 0 0 40px rgba(88, 166, 255, 0.6), 
+                    0 0 80px rgba(88, 166, 255, 0.4),
+                    0 0 120px rgba(145, 234, 201, 0.2);
+        transform: scale(1) rotate(0deg);
     }
-    to { 
-        box-shadow: 0 0 50px #91eac9, 0 0 80px #91eac9;
-        transform: scale(1.05);
+    50% {
+        box-shadow: 0 0 50px rgba(145, 234, 201, 0.7), 
+                    0 0 100px rgba(145, 234, 201, 0.5),
+                    0 0 150px rgba(255, 215, 0, 0.3);
+        transform: scale(1.08) rotate(2deg);
+    }
+    100% { 
+        box-shadow: 0 0 40px rgba(88, 166, 255, 0.6), 
+                    0 0 80px rgba(88, 166, 255, 0.4),
+                    0 0 120px rgba(145, 234, 201, 0.2);
+        transform: scale(1) rotate(0deg);
     }
 }
 
 .loading-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #f8f401;
-    text-shadow: 0 0 20px #58a6ff;
-    margin-bottom: 10px;
-    animation: titleGlow 1.5s ease-in-out infinite alternate;
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Creepster', cursive;
+    background: linear-gradient(135deg, #ff6600 0%, #ff3300 50%, #9b30ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    animation: halloweenTitleGlow 2s ease-in-out infinite alternate;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.8));
 }
 
 @keyframes titleGlow {
-    from { 
-        text-shadow: 0 0 20px #58a6ff;
-        color: #f8f401;
+    0% { 
+        filter: drop-shadow(0 0 20px rgba(248, 244, 1, 0.5));
+        transform: translateY(0);
     }
-    to { 
-        text-shadow: 0 0 40px #91eac9, 0 0 60px #91eac9;
-        color: #91eac9;
+    50% {
+        filter: drop-shadow(0 0 30px rgba(145, 234, 201, 0.7)) 
+                drop-shadow(0 0 50px rgba(88, 166, 255, 0.4));
+        transform: translateY(-3px);
+    }
+    100% { 
+        filter: drop-shadow(0 0 20px rgba(248, 244, 1, 0.5));
+        transform: translateY(0);
+    }
+}
+
+@keyframes halloweenTitleGlow {
+    0% { 
+        filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.8));
+        transform: translateY(0);
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(255, 51, 0, 1)) 
+                drop-shadow(0 0 50px rgba(155, 48, 255, 0.6));
+        transform: translateY(-3px);
+    }
+    100% { 
+        filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.8));
+        transform: translateY(0);
     }
 }
 
 .loading-subtitle {
-    font-size: 1.2rem;
-    color: #58a6ff;
-    margin-bottom: 40px;
-    animation: pulse 1.5s ease-in-out infinite;
+    font-size: 1.3rem;
+    font-family: 'Butcherman', cursive;
+    color: #9b30ff;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    animation: pulse 2s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(155, 48, 255, 0.8), 0 0 30px rgba(102, 0, 153, 0.5);
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
+    0%, 100% { 
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.02);
+    }
 }
 
 .loading-bar-container {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .loading-bar {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 15px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    background: #000000;
+    border: 3px solid #333;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.loading-box {
+    width: 35px;
+    height: 35px;
+    background: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.loading-box.active {
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.4);
+    animation: boxPulse 0.6s ease;
+}
+
+@keyframes boxPulse {
+    0% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.15);
+    }
+    100% { 
+        transform: scale(1);
+    }
 }
 
 .loading-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #58a6ff, #91eac9, #ffd700);
-    border-radius: 10px;
-    width: 0%;
-    transition: width 0.3s ease;
-    position: relative;
-    box-shadow: 0 0 10px #58a6ff;
-}
-
-.loading-progress::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
+    display: none;
 }
 
 .loading-percentage {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #58a6ff;
-    text-shadow: 0 0 10px #58a6ff;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #58a6ff 0%, #91eac9 50%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 15px rgba(88, 166, 255, 0.6));
+    letter-spacing: 3px;
+    animation: percentPulse 1s ease-in-out infinite;
+}
+
+@keyframes percentPulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 15px rgba(88, 166, 255, 0.6));
+    }
+    50% { 
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 25px rgba(145, 234, 201, 0.8));
+    }
 }
 
 /* Video background */
@@ -763,7 +871,265 @@ body.light-theme {
 .light-theme footer { background: #ffffffee; border-top-color: #cfe0ff; color: #234; box-shadow: 0 -2px 12px rgba(15, 50, 102, 0.12); }
 .light-theme footer a { color: #0f5bd6; }
 
-</style>
+/* ===========================
+   RESPONSIVE MOBILE DESIGN
+   =========================== */
+
+@media (max-width: 768px) {
+    /* Body & Sections */
+    body {
+        padding-top: 60px;
+    }
+    
+    section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        min-height: auto;
+    }
+    
+    /* Navbar */
+    .navbar-brand {
+        font-size: 1.8rem !important;
+    }
+    
+    .navbar-brand img {
+        height: 30px !important;
+    }
+    
+    /* Logo Title */
+    .logo-title {
+        font-size: 4rem !important;
+        letter-spacing: 2px;
+    }
+    
+    .roleplay-title {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Info Boxes */
+    .info-boxes {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .info-box {
+        min-width: 90px;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .info-box i {
+        font-size: 1.3rem;
+    }
+    
+    .info-box span {
+        font-size: 1.3rem !important;
+    }
+    
+    /* Buttons */
+    .btn-play {
+        font-size: 1.1rem !important;
+        padding: 0.8rem 2rem !important;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* About Section */
+    .about-title {
+        font-size: 2rem !important;
+    }
+    
+    .about-sub {
+        font-size: 1rem !important;
+    }
+    
+    .about-text {
+        font-size: 0.95rem !important;
+        line-height: 1.8;
+    }
+    
+    /* Trailer Cards */
+    .trailer-card {
+        margin-bottom: 2rem;
+    }
+    
+    .trailer-card img {
+        height: 200px;
+    }
+    
+    .trailer-card .caption h5 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* VIP Float */
+    .vip-float {
+        width: 300px !important;
+        margin-top: 40px;
+    }
+    
+    /* VIP Icons */
+    .vip-box img,
+    #vip-section img[style*="width:60px"] {
+        width: 45px !important;
+    }
+    
+    #vip-main-img {
+        width: 150px !important;
+    }
+    
+    #vip-text {
+        font-size: 1rem !important;
+    }
+    
+    /* Crew Fixed - Hide on mobile or make smaller */
+    .crew-fixed {
+        width: 200px;
+        font-size: 0.85rem;
+        padding: 10px 12px;
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .crew-header {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .rank {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.75rem;
+    }
+    
+    /* Event Logo */
+    #event-logo {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    #event-logo img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    /* Settings Toggle */
+    #settings-toggle {
+        right: 10px !important;
+        bottom: 80px !important;
+    }
+    
+    #settings-btn {
+        padding: 8px 12px !important;
+        font-size: 0.9rem;
+    }
+    
+    #settings-panel {
+        min-width: 180px !important;
+        font-size: 0.85rem;
+    }
+    
+    /* Loading Screen */
+    .loading-logo img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .loading-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .loading-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .loading-bar {
+        padding: 12px 15px;
+        gap: 5px;
+    }
+    
+    .loading-box {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .loading-percentage {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Recruitment Section */
+    #recruitment-section .trailer-card {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    #recruitment-section h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    #recruitment-section p {
+        font-size: 1rem !important;
+    }
+    
+    #recruitment-section img[src="lspd.png"] {
+        width: 200px !important;
+    }
+    
+    /* Footer */
+    footer {
+        font-size: 0.9rem;
+        padding: 2rem 0 !important;
+    }
+    
+    footer a i {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    .logo-title {
+        font-size: 3rem !important;
+    }
+    
+    .info-boxes {
+        gap: 0.8rem;
+    }
+    
+    .info-box {
+        min-width: 80px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-play {
+        font-size: 1rem !important;
+        padding: 0.7rem 1.8rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.7rem !important;
+    }
+    
+    /* Hide crew ranking on very small screens */
+    .crew-fixed {
+        display: none;
+    }
+    
+    /* Adjust loading boxes for small screens */
+    .loading-box {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .loading-bar {
+        gap: 4px;
+        padding: 10px 12px;
+    }
+}
 
     /* VIP SYSTEM */
     .vip-item {
@@ -774,13 +1140,193 @@ body.light-theme {
       transition: 0.2s;
     }
     .vip-item:hover {
-      border-color: #58a6ff;
-      box-shadow: 0 0 16px #58a6ff;
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Remove default outline and focus effects */
+    *:focus,
+    *:focus-visible {
+      outline: none !important;
+    }
+    
+    a, button, input, select, textarea {
+      outline: none !important;
+    }
+    
+    /* HALLOWEEN THEME STYLES */
+    h2, h3, h4, h5 {
+      font-family: 'Butcherman', cursive;
+    }
+    
+    /* Position relative for titles with pseudo-elements */
+    .logo-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Make sure section-title wraps properly */
+    .section-title {
+      width: auto;
+      display: inline-block;
+      font-family: 'Creepster', cursive !important;
+      color: #ff6600 !important;
+      text-shadow: 0 2px 12px #ff3300, 0 0 30px #cc0000, 4px 4px 8px #000 !important;
+    }
+    
+    /* Halloween pumpkin decoration for section titles using bingo.png */
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 70px;
+      height: 70px;
+      background: url('bingo.png') center/contain no-repeat;
+      animation: pumpkinRotate 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(255, 153, 0, 0.8));
+      z-index: -1;
+      mix-blend-mode: screen;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%) scaleX(-1);
+      width: 70px;
+      height: 70px;
+      background: url('bingo.png') center/contain no-repeat;
+      animation: pumpkinRotate 3s ease-in-out infinite reverse;
+      filter: drop-shadow(0 0 15px rgba(255, 153, 0, 0.8));
+      z-index: -1;
+      mix-blend-mode: screen;
+    }
+    
+    @keyframes pumpkinRotate {
+      0%, 100% {
+        transform: translateY(-50%) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-55%) rotate(10deg);
+      }
+    }
+    
+    /* Hide pumpkin decorations on mobile */
+    @media (max-width: 768px) {
+      .section-title::before,
+      .section-title::after {
+        display: none;
+      }
+    }
+    
+    /* Spooky glowing effect for info boxes */
+    .info-box {
+      border-color: #660000 !important;
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.3) inset;
+    }
+    
+    .info-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Halloween button effects */
+    .btn-play {
+      background: linear-gradient(135deg, #ff6600, #cc0000, #660000) !important;
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .btn-play:hover {
+      background: linear-gradient(135deg, #ff8800, #ff6600, #cc0000) !important;
+      box-shadow: 0 15px 35px rgba(255, 102, 0, 0.8), 0 0 30px rgba(204, 0, 0, 0.6) !important;
+    }
+    
+    /* Spooky subtitle text */
+    .about-sub {
+      font-family: 'Butcherman', cursive;
+      color: #9b30ff !important;
+      text-shadow: 0 0 10px rgba(155, 48, 255, 0.6);
+    }
+    
+    /* Halloween footer styling */
+    footer a {
+      color: #ff6600 !important;
+    }
+    
+    footer a:hover {
+      color: #fff !important;
+      text-shadow: 0 0 8px #ff6600, 0 0 16px #cc0000 !important;
+    }
+    
+    /* Halloween card titles */
+    .trailer-card .caption {
+      background: linear-gradient(135deg, rgba(20, 10, 5, 0.95), rgba(30, 15, 10, 0.9)) !important;
+    }
+    
+    /* Spooky recruitment title */
+    #recruitment-section h2 {
+      font-family: 'Creepster', cursive !important;
+      color: #ff6600 !important;
+      text-shadow: 0 0 20px #ff3300, 0 0 40px #cc0000, 3px 3px 6px #000 !important;
+    }
+    
+    /* Halloween loading percentage */
+    .loading-percentage {
+      background: linear-gradient(135deg, #ff6600 0%, #9b30ff 50%, #cc0000 100%) !important;
+    }
+    
+    /* Pumpkin decoration on loading screen using bingo.png */
+    .loading-container::before {
+      content: '';
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      background: url('bingo.png') center/contain no-repeat;
+      animation: pumpkinBounceLoading 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 153, 0, 1));
+      mix-blend-mode: screen;
+    }
+    
+    .loading-container::after {
+      content: '';
+      position: absolute;
+      bottom: -70px;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+      width: 70px;
+      height: 70px;
+      background: url('bingo.png') center/contain no-repeat;
+      animation: pumpkinBounceLoading 2s ease-in-out infinite 1s;
+      filter: drop-shadow(0 0 20px rgba(255, 153, 0, 1));
+      mix-blend-mode: screen;
+    }
+    
+    @keyframes pumpkinBounceLoading {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-15px) rotate(10deg);
+      }
+    }
+    
+    /* Spooky border colors */
+    .trailer-card {
+      border: 2px solid #660000 !important;
+    }
+    
+    .trailer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
     }
 
   </style>
-</head>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -792,8 +1338,17 @@ body.light-theme {
                 <div class="loading-subtitle">Đang tải...</div>
             </div>
             <div class="loading-bar-container">
-                <div class="loading-bar">
-                    <div class="loading-progress" id="loading-progress"></div>
+                <div class="loading-bar" id="loading-boxes">
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
+                    <div class="loading-box"></div>
                 </div>
                 <div class="loading-percentage" id="loading-percentage">0%</div>
             </div>
@@ -901,7 +1456,7 @@ body.light-theme {
     <div class="row">
       <!-- Bên trái: Tin tức -->
       <div class="col-lg-8">
-        <div class="section-title">TIN TỨC MỚI NHẤT</div>
+        <div class="section-title">TIN TUC MOI NHAT</div>
         <div class="row g-4">
           <div class="col-md-6">
             <div class="trailer-card">
@@ -975,7 +1530,7 @@ body.light-theme {
 </section>
 <section class="section-intro" id="vip-section">
   <div class="container mt-5">
-    <div class="section-title text-center">HỆ THỐNG VIP</div>
+    <div class="section-title text-center">HE THONG VIP</div>
 
     <!-- Các icon VIP nhỏ nằm ngang -->
     <div style="display:flex; flex-direction:row; justify-content:center; gap:15px; flex-wrap:wrap; margin:20px 0;">
@@ -1035,7 +1590,7 @@ body.light-theme {
 <!-- Section Tuyển dụng cảnh sát -->
 <section class="section-intro" id="recruitment-section">
   <div class="container mt-5">
-    <div class="section-title text-center">TUYỂN DỤNG CẢNH SÁT</div>
+    <div class="section-title text-center">TUYEN DUNG CANH SAT</div>
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="trailer-card text-center" style="background: linear-gradient(145deg, rgba(10, 20, 40, 0.95), rgba(15, 30, 50, 0.9)); border: 2px solid #1f4a8c; border-radius: 20px; padding: 3rem;">
@@ -1172,7 +1727,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
 </section>
 <section class="section-intro" id="mv-section">
   <div class="container mt-5">
-    <div class="section-title text-center">GIẢI TRÍ</div>
+    <div class="section-title text-center">GIAI TRI</div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="trailer-card text-center" style="position:relative; overflow:hidden;">
@@ -1228,7 +1783,7 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
     // Loading Screen Logic
     document.addEventListener('DOMContentLoaded', function() {
         const loadingScreen = document.getElementById('loading-screen');
-        const loadingProgress = document.getElementById('loading-progress');
+        const loadingBoxes = document.querySelectorAll('.loading-box');
         const loadingPercentage = document.getElementById('loading-percentage');
         const bgVideo = document.getElementById('bg-video');
         
@@ -1250,7 +1805,17 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
         // Simulate loading progress for smooth animation
         function updateProgress(progress) {
             loadingProgressValue = Math.min(progress, 100);
-            loadingProgress.style.width = loadingProgressValue + '%';
+            
+            // Update boxes based on progress
+            const activeBoxes = Math.floor((loadingProgressValue / 100) * loadingBoxes.length);
+            loadingBoxes.forEach((box, index) => {
+                if (index < activeBoxes) {
+                    box.classList.add('active');
+                } else {
+                    box.classList.remove('active');
+                }
+            });
+            
             loadingPercentage.textContent = Math.round(loadingProgressValue) + '%';
             
             // Hide loading screen when both video and page are loaded
@@ -1264,14 +1829,16 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
                         document.getElementById('main-content').style.display = 'block';
                         bgVideo.play().catch(e => console.log('Video autoplay failed:', e));
                         
-                        // Re-enable scroll and ensure page stays at top
+                        // Re-enable scroll
                         document.body.style.overflow = '';
                         isLoadingComplete = true;
                         window.isLoading = false;
-                        window.scrollTo(0, 0);
+                        // Ensure we're at top only initially
+                        if (window.scrollY === 0) {
+                            window.scrollTo(0, 0);
+                        }
                         setTimeout(() => {
                             document.documentElement.style.scrollBehavior = 'smooth';
-                            window.scrollTo(0, 0); // Double ensure we're at top
                         }, 100);
                     }, 500);
                 }, 500);
@@ -1658,7 +2225,18 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- Floating Event Logo -->
 <div id="event-logo">
   <img src="logo.png" alt="Event Logo">
-  </div>
+</div>
+
+<!-- Halloween Pumpkin Decorations -->
+<div class="halloween-pumpkin pumpkin-1">
+  <img src="bingo.png" alt="Halloween Pumpkin">
+</div>
+<div class="halloween-pumpkin pumpkin-2">
+  <img src="bingo.png" alt="Halloween Pumpkin">
+</div>
+<div class="halloween-pumpkin pumpkin-3">
+  <img src="bingo.png" alt="Halloween Pumpkin">
+</div>
 
 <style>
 #event-logo {
@@ -1695,6 +2273,114 @@ document.addEventListener("DOMContentLoaded", () => {
   50% { transform: rotateY(180deg); }
 }
 
+/* Halloween Pumpkin Decorations */
+.halloween-pumpkin {
+  position: fixed;
+  z-index: 500;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.halloween-pumpkin img {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 0 20px rgba(255, 153, 0, 0.6));
+  animation: pumpkinFloat 3s ease-in-out infinite;
+  mix-blend-mode: screen;
+  /* Tách nền - chỉ hiển thị phần sáng của ảnh */
+}
+
+.pumpkin-1 {
+  top: 15%;
+  left: 5%;
+}
+
+.pumpkin-1 img {
+  width: 120px;
+  height: 120px;
+  animation: pumpkinFloat 3s ease-in-out infinite;
+}
+
+.pumpkin-2 {
+  top: 60%;
+  right: 8%;
+}
+
+.pumpkin-2 img {
+  width: 90px;
+  height: 90px;
+  animation: pumpkinFloat 4s ease-in-out infinite 0.5s;
+  transform: rotate(-15deg);
+}
+
+.pumpkin-3 {
+  bottom: 25%;
+  left: 10%;
+}
+
+.pumpkin-3 img {
+  width: 110px;
+  height: 110px;
+  animation: pumpkinFloat 3.5s ease-in-out infinite 1s;
+  transform: rotate(10deg);
+}
+
+@keyframes pumpkinFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-25px) rotate(3deg);
+  }
+}
+
+.pumpkin-1:hover img,
+.pumpkin-2:hover img,
+.pumpkin-3:hover img {
+  filter: drop-shadow(0 0 30px rgba(255, 153, 0, 1)) drop-shadow(0 0 50px rgba(255, 102, 0, 0.8));
+  animation: pumpkinBounce 0.5s ease;
+}
+
+@keyframes pumpkinBounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(5deg);
+  }
+}
+
+/* Hide pumpkins on mobile */
+@media (max-width: 768px) {
+  .pumpkin-2, .pumpkin-3 {
+    display: none;
+  }
+  
+  .pumpkin-1 {
+    top: 10%;
+    left: 3%;
+  }
+  
+  .pumpkin-1 img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .halloween-pumpkin {
+    display: none;
+  }
+}
 
 </style>
 
