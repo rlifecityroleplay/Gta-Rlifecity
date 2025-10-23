@@ -2,10 +2,18 @@
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
     <meta name="description" content="RLIFE CITY Roleplay - Thành phố nhập vai GTA V chân thực, sáng tạo và gắn kết cộng đồng tại Việt Nam.">
     <meta name="keywords" content="RLIFE CITY, GTA V Roleplay, server GTA V, nhập vai Việt Nam">
     <meta name="author" content="RLIFE CITY Team">
+    
+    <!-- Mobile Web App Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RLIFE CITY">
+    <meta name="theme-color" content="#081120">
+    
     <title>RLIFE CITY Roleplay</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -13,7 +21,46 @@
     <!-- Halloween Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Butcherman&family=Eater&display=swap" rel="stylesheet">
     <style>
-html { scroll-behavior: smooth; }
+html { 
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Mobile optimizations */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Better touch targets for mobile */
+a, button, .btn, .nav-link, .info-box, .trailer-card, .vip-item {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Prevent text selection on interactive elements */
+.btn, button, .nav-link, .info-box, .trailer-card {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Prevent horizontal scroll on mobile */
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Smooth scrolling with hardware acceleration */
+section, .trailer-card, .info-box {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
 .section-about {
   background: rgba(10,20,40,0.85);
   border-top: 2px solid #1a3a6e;
@@ -887,13 +934,23 @@ body.light-theme {
         min-height: auto;
     }
     
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
     /* Navbar */
     .navbar-brand {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
     }
     
     .navbar-brand img {
-        height: 30px !important;
+        height: 25px !important;
+    }
+    
+    .navbar-toggler {
+        padding: 0.5rem;
+        font-size: 1.2rem;
     }
     
     /* Logo Title */
@@ -1087,36 +1144,110 @@ body.light-theme {
     footer a i {
         font-size: 1.3rem;
     }
+    
+    /* Halloween pumpkin decorations - adjust for tablet */
+    .section-title::before,
+    .section-title::after {
+        width: 50px !important;
+        height: 50px !important;
+        left: -70px !important;
+    }
+    
+    .section-title::after {
+        right: -70px !important;
+        left: auto !important;
+    }
+    
+    /* VIP Section responsive */
+    #vip-section .section-title {
+        font-size: 2rem !important;
+    }
+    
+    /* About section responsive */
+    .section-about {
+        padding: 3rem 1rem !important;
+    }
+    
+    .section-about img {
+        height: 120px !important;
+        margin-bottom: 1.5rem;
+        margin-right: 0 !important;
+    }
+    
+    .section-about .container {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
 }
 
 @media (max-width: 480px) {
     /* Extra small screens */
     .logo-title {
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
+    }
+    
+    .roleplay-title {
+        font-size: 1.2rem !important;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+    
+    .navbar-brand img {
+        height: 20px !important;
     }
     
     .info-boxes {
         gap: 0.8rem;
+        flex-direction: column;
+        width: 100%;
     }
     
     .info-box {
-        min-width: 80px;
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
+        min-width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
     }
     
     .btn-play {
         font-size: 1rem !important;
-        padding: 0.7rem 1.8rem !important;
+        padding: 0.8rem 2rem !important;
+        width: 100%;
+        max-width: 300px;
     }
     
     .section-title {
-        font-size: 1.7rem !important;
+        font-size: 1.5rem !important;
+        padding: 0 10px;
     }
     
     /* Hide crew ranking on very small screens */
     .crew-fixed {
-        display: none;
+        display: none !important;
+    }
+    
+    /* Hide event logo on very small screens */
+    #event-logo {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    #event-logo img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    /* Settings toggle smaller */
+    #settings-toggle {
+        bottom: 65px !important;
+    }
+    
+    #settings-btn {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
     }
     
     /* Adjust loading boxes for small screens */
@@ -1128,6 +1259,144 @@ body.light-theme {
     .loading-bar {
         gap: 4px;
         padding: 10px 12px;
+    }
+    
+    .loading-title {
+        font-size: 2rem !important;
+    }
+    
+    .loading-subtitle {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Trailer cards full width */
+    .trailer-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .trailer-card img {
+        height: 180px !important;
+    }
+    
+    /* VIP section */
+    #vip-section img[style*="width:60px"] {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    #vip-main-img {
+        width: 120px !important;
+    }
+    
+    #vip-text {
+        font-size: 0.9rem !important;
+        padding: 0 15px;
+    }
+    
+    /* Recruitment section */
+    #recruitment-section h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    #recruitment-section p {
+        font-size: 0.9rem !important;
+    }
+    
+    #recruitment-section img[src="lspd.png"] {
+        width: 150px !important;
+    }
+    
+    #recruitment-section .trailer-card {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    /* About section */
+    .about-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .about-sub {
+        font-size: 0.9rem !important;
+    }
+    
+    .about-text {
+        font-size: 0.85rem !important;
+    }
+    
+    .section-about img {
+        height: 100px !important;
+    }
+    
+    /* MV Section */
+    #mv-section .trailer-card img {
+        height: auto !important;
+    }
+    
+    /* Grid layouts responsive */
+    .row.g-4 {
+        gap: 1rem !important;
+    }
+    
+    .col-md-6, .col-md-4, .col-lg-8, .col-lg-4 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    /* VIP float image */
+    .vip-float {
+        width: 200px !important;
+        margin-top: 20px !important;
+    }
+    
+    /* Recruitment section grid */
+    #recruitment-section .trailer-card > div {
+        padding: 0 !important;
+    }
+    
+    #recruitment-section div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    /* Better button spacing */
+    .btn-play {
+        margin: 0.5rem auto !important;
+        display: block !important;
+    }
+    
+    /* Nav links spacing */
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-nav.ms-3 {
+        margin-top: 0.5rem !important;
+    }
+}
+
+/* Landscape orientation on small devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .logo-title {
+        font-size: 3rem !important;
+    }
+    
+    .roleplay-title {
+        font-size: 1.3rem !important;
+    }
+    
+    section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .info-boxes {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+    }
+    
+    .info-box {
+        min-width: 30% !important;
+        max-width: 30% !important;
     }
 }
 
