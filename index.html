@@ -7,11 +7,34 @@
     <meta name="keywords" content="RLIFE CITY, GTA V Roleplay, server GTA V, nhập vai Việt Nam">
     <meta name="author" content="RLIFE CITY Team">
     
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rlifecity.com/">
+    <meta property="og:title" content="RLIFE CITY Roleplay - Server GTA V Việt Nam">
+    <meta property="og:description" content="RLIFE CITY Roleplay - Thành phố nhập vai GTA V chân thực, sáng tạo và gắn kết cộng đồng tại Việt Nam.">
+    <meta property="og:image" content="https://rlifecity.com/logo.png">
+    <meta property="og:image:secure_url" content="https://rlifecity.com/logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="RLIFE CITY Logo">
+    <meta property="og:site_name" content="RLIFE CITY Roleplay">
+    <meta property="og:locale" content="vi_VN">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rlifecity.com/">
+    <meta name="twitter:title" content="RLIFE CITY Roleplay - Server GTA V Việt Nam">
+    <meta name="twitter:description" content="RLIFE CITY Roleplay - Thành phố nhập vai GTA V chân thực, sáng tạo và gắn kết cộng đồng tại Việt Nam.">
+    <meta name="twitter:image" content="https://rlifecity.com/logo.png">
+    <meta name="twitter:image:alt" content="RLIFE CITY Logo">
+    
     <!-- Mobile Web App Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="RLIFE CITY">
+    <meta name="apple-touch-icon" content="logo.png">
     <meta name="theme-color" content="#081120">
     
     <title>RLIFE CITY Roleplay</title>
@@ -2412,12 +2435,240 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
     });
     </script>
     
-    <!-- Halloween Jumpscare Script with Glitch Effects -->
+    <!-- Halloween Jumpscare Script with Glitch Effects & Sound -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const jumpscareOverlay = document.getElementById('jumpscare-overlay');
         const jumpscareImage = document.getElementById('jumpscare-image');
         let jumpscareTriggered = false;
+        let audioContext;
+        
+        // Initialize Audio Context
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioContext;
+        }
+        
+        // Create scary sound using Web Audio API
+        function createScarySound() {
+            const ctx = initAudio();
+            console.log('🔊 Creating scary scream sound...');
+            
+            // Create multiple oscillators for a complex scary sound
+            const oscillator1 = ctx.createOscillator();
+            const oscillator2 = ctx.createOscillator();
+            const oscillator3 = ctx.createOscillator();
+            const oscillator4 = ctx.createOscillator();
+            
+            const gainNode = ctx.createGain();
+            
+            // Set frequencies for a dissonant, scary sound
+            oscillator1.type = 'sawtooth';
+            oscillator1.frequency.setValueAtTime(100, ctx.currentTime);
+            oscillator1.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.5);
+            
+            oscillator2.type = 'square';
+            oscillator2.frequency.setValueAtTime(666, ctx.currentTime);
+            oscillator2.frequency.exponentialRampToValueAtTime(333, ctx.currentTime + 0.5);
+            
+            oscillator3.type = 'triangle';
+            oscillator3.frequency.setValueAtTime(200, ctx.currentTime);
+            oscillator3.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3);
+            
+            oscillator4.type = 'sine';
+            oscillator4.frequency.setValueAtTime(1000, ctx.currentTime);
+            oscillator4.frequency.exponentialRampToValueAtTime(2000, ctx.currentTime + 0.2);
+            
+            // Create envelope (LOUDER!)
+            gainNode.gain.setValueAtTime(0, ctx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.8, ctx.currentTime + 0.01);
+            gainNode.gain.exponentialRampToValueAtTime(0.6, ctx.currentTime + 0.1);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+            
+            // Connect nodes
+            oscillator1.connect(gainNode);
+            oscillator2.connect(gainNode);
+            oscillator3.connect(gainNode);
+            oscillator4.connect(gainNode);
+            gainNode.connect(ctx.destination);
+            
+            // Start and stop
+            const now = ctx.currentTime;
+            oscillator1.start(now);
+            oscillator2.start(now);
+            oscillator3.start(now);
+            oscillator4.start(now);
+            
+            oscillator1.stop(now + 1.5);
+            oscillator2.stop(now + 1.5);
+            oscillator3.stop(now + 1.5);
+            oscillator4.stop(now + 1.5);
+        }
+        
+        // Create heartbeat sound
+        function createHeartbeat() {
+            const ctx = initAudio();
+            console.log('💓 Creating heartbeat sound...');
+            
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.value = 60;
+                    
+                    gain.gain.setValueAtTime(0.6, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.1);
+                }, i * 500);
+            }
+        }
+        
+        // Create glitch sound
+        function createGlitchSound() {
+            const ctx = initAudio();
+            console.log('⚡ Creating glitch sounds...');
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    
+                    osc.type = 'square';
+                    osc.frequency.value = Math.random() * 1000 + 500;
+                    
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.05);
+                }, i * 100);
+            }
+        }
+        
+        // Create ambient horror drone
+        function createHorrorDrone() {
+            const ctx = initAudio();
+            console.log('👹 Creating horror drone...');
+            
+            const osc1 = ctx.createOscillator();
+            const osc2 = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc1.type = 'sawtooth';
+            osc1.frequency.value = 55; // Low A
+            
+            osc2.type = 'sine';
+            osc2.frequency.value = 110; // A
+            osc2.detune.value = -10; // Slightly detuned for unease
+            
+            gain.gain.setValueAtTime(0, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 0.5);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2.5);
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc1.start();
+            osc2.start();
+            
+            osc1.stop(ctx.currentTime + 2.5);
+            osc2.stop(ctx.currentTime + 2.5);
+        }
+        
+        // Create whisper effect
+        function createWhisper() {
+            const ctx = initAudio();
+            console.log('👻 Creating whisper effect...');
+            
+            const bufferSize = ctx.sampleRate * 0.3;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            // Create white noise
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 2000;
+            filter.Q.value = 0.5;
+            
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            
+            noise.start();
+            noise.stop(ctx.currentTime + 0.3);
+        }
+        
+        // Play all sounds
+        function playScarySound() {
+            try {
+                const ctx = initAudio();
+                
+                // Resume audio context (required for some browsers)
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                
+                // Try to play external sound file first (if exists)
+                const screamAudio = new Audio('scream.mp3'); // Thêm file scream.mp3 vào thư mục nếu có
+                screamAudio.volume = 1.0; // Max volume
+                screamAudio.play().then(() => {
+                    console.log('✅ Playing scream.mp3');
+                }).catch((error) => {
+                    // If file doesn't exist, use generated sound
+                    console.log('⚠️ scream.mp3 not found, using generated sound');
+                    console.log('Error:', error.message);
+                });
+                
+                // ALWAYS play generated sounds as backup and enhancement
+                // Play horror drone immediately
+                createHorrorDrone();
+                
+                // Play scream sound (louder)
+                createScarySound();
+                
+                // Add whisper effect
+                setTimeout(() => createWhisper(), 50);
+                
+                // Add heartbeat
+                setTimeout(() => createHeartbeat(), 200);
+                
+                // Add glitch sounds
+                setTimeout(() => createGlitchSound(), 100);
+                
+                // Add more whispers
+                setTimeout(() => createWhisper(), 800);
+                setTimeout(() => createWhisper(), 1500);
+                
+                console.log('🔊 All scary sounds triggered!');
+                
+            } catch (e) {
+                console.log('❌ Audio play failed:', e);
+            }
+        }
         
         // Screen flash effect
         function flashScreen() {
@@ -2448,6 +2699,11 @@ RLIFE CITY cam kết mang đến môi trường công bằng, minh bạch và vu
         function triggerJumpscare() {
             if (jumpscareTriggered) return;
             jumpscareTriggered = true;
+            
+            console.log('🎃 JUMPSCARE TRIGGERED!');
+            
+            // Play scary sound immediately
+            playScarySound();
             
             // Flash screen before showing
             flashScreen();
