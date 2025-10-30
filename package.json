@@ -1,0 +1,17 @@
+{
+  "name": "rlife",
+  "version": "1.0.0",
+  "description": "Bot Discord + API cho RLife City",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "discord.js": "^14.22.1",
+    "express": "^5.1.0"
+  }
+}

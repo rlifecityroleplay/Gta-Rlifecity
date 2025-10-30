@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đua Top Xịt Sơn - RLIFE CITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="custom-cursor.css">
+    <style>
+        body {
+            background: url('duatopxitsonn.png') center center / cover no-repeat fixed;
+            background-color: #0a1929;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 41, 0.4);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #6c3483 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(155, 89, 182, 0.4);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .event-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-info {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-info i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .section-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+        }
+
+        .rule-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #9b59b6;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .rule-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .rule-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: rgba(155, 89, 182, 0.2);
+            border: 2px solid #9b59b6;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0.5rem;
+            font-weight: 600;
+        }
+
+        .prize-section {
+            margin-bottom: 2rem;
+        }
+
+        .prize-section-header {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3) 0%, rgba(155, 89, 182, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .prize-section-header h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #9b59b6;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(155, 89, 182, 0.5);
+        }
+
+        .prize-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prize-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .prize-card h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-card.first {
+            border-color: #ffd700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+        }
+
+        .prize-card.second {
+            border-color: #c0c0c0;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.1) 100%);
+        }
+
+        .prize-card.third {
+            border-color: #cd7f32;
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.1) 100%);
+        }
+
+        .prize-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #9b59b6;
+        }
+
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .warning-box i {
+            font-size: 2rem;
+            color: #e74c3c;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.5);
+            color: #fff;
+        }
+
+        .medal-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .info-box {
+            background: rgba(155, 89, 182, 0.1);
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .event-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-box {
+                padding: 1.5rem;
+            }
+            
+            .prize-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="event-header">
+            <h1>🎨 SỰ KIỆN ĐUA TOP XỊT SƠN 🎨</h1>
+            <div class="event-info">
+                <i class="fas fa-calendar-alt"></i>Bắt đầu từ: 11/09/2025
+            </div>
+            <div class="event-info">
+                <i class="fas fa-users"></i>Tham gia theo Crew
+            </div>
+        </div>
+
+        <!-- Thể lệ sự kiện -->
+        <div class="section-box">
+            <h2 class="section-title">
+                <i class="fas fa-clipboard-list"></i>
+                Thể lệ sự kiện
+            </h2>
+            
+            <div class="rule-item">
+                <strong>⏰ Thời gian diễn ra</strong>
+                <div class="time-badge">
+                    <i class="fas fa-calendar-week"></i> Top Tuần: 00:00 Thứ Hai → 23:59 Chủ Nhật
+                </div>
+                <div class="time-badge">
+                    <i class="fas fa-calendar-check"></i> Top Tháng: Tổng kết 23:59 ngày cuối tháng
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <strong>👥 Đối tượng tham gia</strong>
+                Tất cả các crew trong server Rlife City
+            </div>
+
+            <div class="rule-item">
+                <strong>📊 Cách thức tính điểm</strong>
+                <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.5rem;">
+                    <li>Mỗi crew có một kênh riêng trên Discord để đăng ảnh xịt sơn</li>
+                    <li>Số lượng ảnh hợp lệ = Điểm của crew</li>
+                    <li>Ảnh hợp lệ phải tuân thủ yêu cầu của BQT</li>
+                </ul>
+            </div>
+
+            <div class="rule-item">
+                <strong>📸 Yêu cầu ảnh hợp lệ</strong>
+                <div class="info-box">
+                    Mỗi ảnh đăng lên phải chụp rõ nét, đúng vị trí xịt sơn theo yêu cầu của BQT. Ảnh mờ, không rõ hoặc không đúng vị trí sẽ không được tính điểm.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>QUY ĐỊNH NGHIÊM KHẮC:</strong> Nghiêm cấm mọi hành vi gian lận bao gồm sử dụng phần mềm thứ ba (hack, cheat) hoặc bug game. Crew vi phạm sẽ bị hủy kết quả và chịu hình phạt theo quy định của server.
+                </div>
+            </div>
+        </div>
+
+        <!-- Giải thưởng Top Tuần -->
+        <div class="section-box prize-section">
+            <div class="prize-section-header">
+                <h3>🏆 GIẢI THƯỞNG TOP TUẦN 🏆</h3>
+            </div>
+
+            <!-- Top 1 Tuần -->
+            <div class="prize-card first">
+                <h4>
+                    <span class="medal-icon">🥇</span>
+                    TOP 1
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>10 khẩu Bullpup Rifle MK2</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>20 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>10 triệu IG</strong>
+                </div>
+            </div>
+
+            <!-- Top 2 Tuần -->
+            <div class="prize-card second">
+                <h4>
+                    <span class="medal-icon">🥈</span>
+                    TOP 2
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>5 khẩu Bullpup Rifle MK2</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>10 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>5 triệu IG</strong>
+                </div>
+            </div>
+
+            <!-- Top 3 Tuần -->
+            <div class="prize-card third">
+                <h4>
+                    <span class="medal-icon">🥉</span>
+                    TOP 3
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>10 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>3 triệu IG</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giải thưởng Top Tháng -->
+        <div class="section-box prize-section">
+            <div class="prize-section-header">
+                <h3>💎 GIẢI THƯỞNG TOP THÁNG 💎</h3>
+            </div>
+
+            <!-- Top 1 Tháng -->
+            <div class="prize-card first">
+                <h4>
+                    <span class="medal-icon">🥇</span>
+                    TOP 1
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>30 khẩu Bullpup Rifle MK2</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>40 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>20 triệu IG</strong>
+                </div>
+                <div class="prize-item" style="border: 2px solid #ffd700; background: rgba(255, 215, 0, 0.1);">
+                    <i class="fas fa-glasses" style="color: #ffd700;"></i>
+                    <strong style="color: #ffd700;">1 Phụ kiện Kính xịn xò</strong>
+                </div>
+            </div>
+
+            <!-- Top 2 Tháng -->
+            <div class="prize-card second">
+                <h4>
+                    <span class="medal-icon">🥈</span>
+                    TOP 2
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>15 khẩu Bullpup Rifle MK2</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>20 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>10 triệu IG</strong>
+                </div>
+            </div>
+
+            <!-- Top 3 Tháng -->
+            <div class="prize-card third">
+                <h4>
+                    <span class="medal-icon">🥉</span>
+                    TOP 3
+                </h4>
+                <div class="prize-item">
+                    <i class="fas fa-gun"></i>
+                    <strong>20 khẩu Bullpup Rifle thường</strong>
+                </div>
+                <div class="prize-item">
+                    <i class="fas fa-coins"></i>
+                    <strong>6 triệu IG</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quản lý và Trao giải -->
+        <div class="section-box">
+            <h2 class="section-title">
+                <i class="fas fa-tasks"></i>
+                Quản lý & Trao giải
+            </h2>
+            
+            <div class="rule-item">
+                <strong>📋 Quản lý điểm số</strong>
+                BQT sẽ tạo kênh riêng cho từng crew để đăng ảnh và thường xuyên kiểm tra, cập nhật điểm số
+            </div>
+
+            <div class="rule-item">
+                <strong>📊 Bảng xếp hạng</strong>
+                Cập nhật công khai trên Discord hoặc Fanpage hàng ngày/hàng tuần
+            </div>
+
+            <div class="rule-item">
+                <strong>🎁 Trao giải</strong>
+                Sau khi sự kiện kết thúc, BQT sẽ công bố crew chiến thắng chính thức và tiến hành trao thưởng
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="section-box text-center" style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.2) 0%, rgba(155, 89, 182, 0.1) 100%); border-color: rgba(155, 89, 182, 0.3);">
+            <h2 style="color: #ffd700; font-size: 2rem; margin-bottom: 1rem;">
+                🎨 Cùng crew chinh phục bảng xếp hạng và nhận thưởng khủng! 🎨
+            </h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">
+                Tham gia Discord để đăng ảnh và theo dõi bảng xếp hạng!
+            </p>
+            <a href="https://discord.gg/Z86msdRTD9" target="_blank" class="back-btn" style="background: linear-gradient(135deg, #9b59b6 0%, #6c3483 100%); margin-right: 1rem;">
+                <i class="fab fa-discord"></i> Tham gia Discord ngay
+            </a>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="custom-cursor.js"></script>
+</body>
+</html>
+
+
+
