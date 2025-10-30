@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Royale - RLIFE CITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="custom-cursor.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('pubg.png') center center / cover no-repeat fixed;
+            background-color: #0a0e27;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.4);
+            z-index: 0;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.08;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 69, 0, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%);
+            animation: bgMove 15s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .hero-header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: linear-gradient(180deg, rgba(255, 69, 0, 0.15) 0%, transparent 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero-header h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF4500, #FFD700, #FF4500);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #FF4500;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #FF4500;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+        }
+
+        /* Game Modes */
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.1), rgba(255, 69, 0, 0.05));
+            border: 2px solid rgba(255, 69, 0, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FF4500, transparent);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF4500;
+            box-shadow: 
+                0 20px 60px rgba(255, 69, 0, 0.4),
+                0 0 80px rgba(255, 69, 0, 0.3);
+        }
+
+
+        .mode-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .mode-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .mode-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mode-features li {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .mode-features li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #FF4500;
+        }
+
+        /* Rules Section */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .rule-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .rule-box:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .rule-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF4500, #FF6347);
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .rule-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .rule-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Weapons Section */
+        .weapons-section {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+            border-radius: 20px;
+            padding: 50px 30px;
+            margin-top: 60px;
+        }
+
+        .weapons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .weapon-item {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(255, 69, 0, 0.1));
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .weapon-item:hover {
+            border-color: #FF4500;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3);
+        }
+
+        .weapon-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
+        .weapon-type {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 69, 0, 0.1));
+            border: 2px solid rgba(255, 69, 0, 0.5);
+            border-radius: 50px;
+            color: #FF4500;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 69, 0, 0.2));
+            border-color: #FF4500;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 25px rgba(255, 69, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 70px 15px 40px;
+            }
+
+            .hero-header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .game-modes,
+            .rules-grid,
+            .weapons-grid,
+            .rewards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <img src="chuot.png" alt="cursor" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="index.html">
+            <i class="fas fa-arrow-left"></i>
+            <span>Quay lại</span>
+        </a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Hero Header -->
+        <div class="hero-header">
+            <h1>BATTLE ROYALE</h1>
+            <p class="hero-subtitle">RLIFE CITY EDITION</p>
+            <p class="hero-description">
+                <strong>PUBG ư? Hãy để RLife City lo!</strong><br>
+                Trải nghiệm Battle Royale đỉnh cao ngay trong GTA V với bản đồ Los Santos rộng lớn. 
+                50 người chơi, 1 vùng đất, chỉ có 1 người sống sót. Bạn đã sẵn sàng để trở thành <strong>CHICKEN DINNER</strong> của RLife City chưa?
+            </p>
+        </div>
+
+        <!-- Game Modes Section -->
+        <div class="content-section">
+            <h2 class="section-title">CHẾ ĐỘ CHƠI</h2>
+            <div class="game-modes">
+                <!-- Solo -->
+                <div class="mode-card" style="max-width: 800px; margin: 0 auto;">
+                    <h3 class="mode-title">Solo Mode - 1 vs 50</h3>
+                    <p class="mode-description">
+                        Chiến đấu một mình để chứng tỏ bản lĩnh. Không đồng đội, không hỗ trợ - chỉ có kỹ năng và may mắn quyết định người chiến thắng!
+                    </p>
+                    <ul class="mode-features">
+                        <li>50 người chơi tham gia</li>
+                        <li>Tự lo liệu mọi thứ</li>
+                        <li>Thời gian: 20-30 phút</li>
+                        <li>Người cuối cùng sống sót chiến thắng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Section -->
+        <div class="content-section">
+            <h2 class="section-title">QUY TẮC TRÒ CHƠI</h2>
+            <div class="rules-grid">
+                <div class="rule-box">
+                    <div class="rule-number">1</div>
+                    <h4 class="rule-title">Nhảy Dù</h4>
+                    <p class="rule-text">
+                        50 người chơi nhảy dù từ máy bay vào bản đồ Los Santos. Chọn vị trí hạ cánh chiến lược!
+                    </p>
+                </div>
+
+                <div class="rule-box">
+                    <div class="rule-number">2</div>
+                    <h4 class="rule-title">Loot Vũ Khí</h4>
+                    <p class="rule-text">
+                        Thu thập vũ khí, đạn dược, giáp và vật phẩm y tế từ các toà nhà, kho bãi trên khắp bản đồ.
+                    </p>
+                </div>
+
+                <div class="rule-box">
+                    <div class="rule-number">3</div>
+                    <h4 class="rule-title">Vòng Tròn Lửa</h4>
+                    <p class="rule-text">
+                        Vùng an toàn thu hẹp dần theo thời gian. Ở ngoài vòng tròn = mất máu liên tục. Di chuyển thông minh!
+                    </p>
+                </div>
+
+                <div class="rule-box">
+                    <div class="rule-number">4</div>
+                    <h4 class="rule-title">Tiêu Diệt</h4>
+                    <p class="rule-text">
+                        Săn lùng và tiêu diệt đối thủ. Mỗi kill được cộng điểm. Người cuối cùng sống sót là người chiến thắng!
+                    </p>
+                </div>
+
+                <div class="rule-box">
+                    <div class="rule-number">5</div>
+                    <h4 class="rule-title">Xe Cộ</h4>
+                    <p class="rule-text">
+                        Sử dụng xe hơi, xe máy để di chuyển nhanh. Nhưng cẩn thận - tiếng động sẽ để lộ vị trí!
+                    </p>
+                </div>
+
+                <div class="rule-box">
+                    <div class="rule-number">6</div>
+                    <h4 class="rule-title">Chicken Dinner</h4>
+                    <p class="rule-text">
+                        Người/đội cuối cùng sống sót giành chiến thắng và nhận phần thưởng "Winner Winner Chicken Dinner"!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weapons Section -->
+        <div class="content-section">
+            <div class="weapons-section">
+                <h2 class="section-title">VŨ KHÍ KHẢ DỤNG</h2>
+                <div class="weapons-grid">
+                    <div class="weapon-item">
+                        <div class="weapon-name">Pistol</div>
+                        <div class="weapon-type">Súng lục</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">SMG</div>
+                        <div class="weapon-type">Súng tiểu liên</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Assault Rifle</div>
+                        <div class="weapon-type">Súng trường tấn công</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Sniper Rifle</div>
+                        <div class="weapon-type">Súng bắn tỉa</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Shotgun</div>
+                        <div class="weapon-type">Súng săn</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Grenade</div>
+                        <div class="weapon-type">Lựu đạn</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Armor</div>
+                        <div class="weapon-type">Giáp</div>
+                    </div>
+
+                    <div class="weapon-item">
+                        <div class="weapon-name">Med Kit</div>
+                        <div class="weapon-type">Bộ y tế</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="custom-cursor.js"></script>
+</body>
+</html>
+
