@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Trí Hình Xăm - RLIFE CITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="custom-cursor.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%);
+            animation: bgMove 15s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .showroom-header {
+            text-align: center;
+            padding: 80px 20px 50px;
+            position: relative;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+        }
+
+        .showroom-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .showroom-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #00D9FF, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .header-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .header-subtitle strong {
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Gallery */
+        .tattoo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            padding: 40px 20px 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .tattoo-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .tattoo-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 
+                0 25px 70px rgba(255, 215, 0, 0.5),
+                0 0 100px rgba(255, 215, 0, 0.4),
+                inset 0 0 40px rgba(255, 215, 0, 0.1);
+        }
+
+        .tattoo-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tattoo-item img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .tattoo-item:hover img {
+            transform: scale(1.12);
+        }
+
+        /* Tattoo Caption */
+        .tattoo-caption {
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tattoo-caption::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: lineShine 3s ease-in-out infinite;
+        }
+
+        @keyframes lineShine {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .tattoo-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .tattoo-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tattoo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #FFD700;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Badge */
+        .tattoo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            border: 2px solid rgba(0, 217, 255, 0.5);
+            border-radius: 50px;
+            color: #00D9FF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.2));
+            border-color: #00D9FF;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 100px rgba(255, 215, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: #FFD700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .showroom-header {
+                padding: 60px 15px 40px;
+            }
+
+            .showroom-header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                padding: 0 10px;
+                margin-bottom: 15px;
+            }
+
+            .header-subtitle {
+                font-size: 1rem;
+                line-height: 1.6;
+                padding: 0 10px;
+            }
+
+            .tattoo-gallery {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 20px 15px 60px;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+            }
+
+            .back-button a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .tattoo-item img {
+                height: 280px;
+            }
+
+            .tattoo-caption {
+                padding: 20px;
+            }
+
+            .tattoo-title {
+                font-size: 1.3rem;
+                letter-spacing: 1.5px;
+            }
+
+            .tattoo-description {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .tag {
+                font-size: 0.8rem;
+                padding: 5px 12px;
+            }
+
+            .tattoo-badge {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <img src="chuot.png" alt="cursor" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="index.html">
+            <i class="fas fa-arrow-left"></i>
+            <span>Quay lại</span>
+        </a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Header -->
+        <div class="showroom-header">
+            <h1>🎨 TRANG TRÍ HÌNH XĂM 🎨</h1>
+            <p class="header-subtitle">
+                Khám phá bộ sưu tập hình xăm <strong>độc đáo</strong> và <strong>đầy nghệ thuật</strong>. 
+                Mỗi thiết kế mang trong mình một <strong>ý nghĩa sâu sắc</strong>, 
+                thể hiện <strong>cá tính</strong>, <strong>phong cách</strong> và câu chuyện riêng của bạn. 
+                Hãy chọn cho mình biểu tượng hoàn hảo để <strong>khẳng định bản thân</strong>!
+            </p>
+        </div>
+
+        <!-- Gallery -->
+        <div class="tattoo-gallery">
+            <!-- Tattoo 1 -->
+            <div class="tattoo-item" onclick="openLightbox('hinhxam/hinhxam1.jpg')">
+                <div class="tattoo-image-wrapper">
+                    <span class="tattoo-badge">🔥 Hot</span>
+                    <img src="hinhxam/hinhxam1.jpg" alt="Hình xăm rồng">
+                </div>
+                <div class="tattoo-caption">
+                    <h3 class="tattoo-title">⚡ SONG LONG</h3>
+                    <p class="tattoo-description">
+                        Biểu tượng của sức mạnh, quyền uy và may mắn. Hình xăm rồng thể hiện tinh thần kiên cường, bất khuất và khát vọng chinh phục đỉnh cao. Thiết kế chi tiết từng vảy rồng, tạo nên vẻ đẹp uy nghiêm và cuốn hút.
+                    </p>
+                    <div class="tattoo-tags">
+                        <span class="tag">💪 Sức Mạnh</span>
+                        <span class="tag">👑 Quyền Uy</span>
+                        <span class="tag">🍀 May Mắn</span>
+                        <span class="tag">⭐ Best Seller</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tattoo 2 -->
+            <div class="tattoo-item" onclick="openLightbox('hinhxam/hinhxam2.jpg')">
+                <div class="tattoo-image-wrapper">
+                    <span class="tattoo-badge">✨ Premium</span>
+                    <img src="hinhxam/hinhxam2.jpg" alt="Hình xăm phượng hoàng">
+                </div>
+                <div class="tattoo-caption">
+                    <h3 class="tattoo-title">🔥 THÁNH ĐẾ</h3>
+                    <p class="tattoo-description">
+                        Tượng trưng cho sự tái sinh, hồi sinh từ đống tro tàn và khởi đầu mới. Phượng hoàng là biểu tượng của vẻ đẹp bất diệt, lòng can đảm và khả năng vượt qua mọi thử thách. Nghệ thuật tattoo tinh xảo với từng đường nét sắc sảo.
+                    </p>
+                    <div class="tattoo-tags">
+                        <span class="tag">🦅 Tự Do</span>
+                        <span class="tag">💎 Quý Phái</span>
+                        <span class="tag">🌟 Tái Sinh</span>
+                        <span class="tag">🎨 Nghệ Thuật</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tattoo 3 -->
+            <div class="tattoo-item" onclick="openLightbox('hinhxam/hinhxam3.jpg')">
+                <div class="tattoo-image-wrapper">
+                    <span class="tattoo-badge">👑 VIP</span>
+                    <img src="hinhxam/hinhxam3.jpg" alt="Hình xăm hổ">
+                </div>
+                <div class="tattoo-caption">
+                    <h3 class="tattoo-title">🐯 RỒNG THẦN QUYỀN LỰC</h3>
+                    <p class="tattoo-description">
+                        Chúa tể của bầu trời - biểu tượng của lòng dũng cảm, uy quyền và sự bảo vệ. Mang đến năng lượng mạnh mẽ, thể hiện bản lĩnh của những người không sợ thử thách. Từng sọc vằn được khắc họa sống động và chân thực.
+                    </p>
+                    <div class="tattoo-tags">
+                        <span class="tag">🔥 Dũng Mãnh</span>
+                        <span class="tag">🛡️ Bảo Vệ</span>
+                        <span class="tag">⚔️ Chiến Binh</span>
+                        <span class="tag">🌟 Exclusive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Tattoo Preview">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="custom-cursor.js"></script>
+    <script>
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
+

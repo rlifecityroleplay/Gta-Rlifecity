@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom Xe - RLIFE CITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="custom-cursor.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%);
+            animation: bgMove 15s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .showroom-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+
+        .showroom-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #00D9FF, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Gallery */
+        .car-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            padding: 40px 20px 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .car-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .car-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(0, 217, 255, 0.4),
+                0 0 80px rgba(0, 217, 255, 0.3);
+        }
+
+        .car-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .car-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            border: 2px solid rgba(0, 217, 255, 0.5);
+            border-radius: 50px;
+            color: #00D9FF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.2));
+            border-color: #00D9FF;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 100px rgba(0, 217, 255, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: #00D9FF;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .showroom-header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .car-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px 15px 60px;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+            }
+
+            .back-button a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .car-item img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <img src="chuot.png" alt="cursor" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="index.html">
+            <i class="fas fa-arrow-left"></i>
+            <span>Quay lại</span>
+        </a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Header -->
+        <div class="showroom-header">
+            <h1>🏎️ SHOWROOM XE 🏎️</h1>
+        </div>
+
+        <!-- Gallery -->
+        <div class="car-gallery">
+            <!-- Zentoro -->
+            <div class="car-item" onclick="openLightbox('zentoro/anhxe1.png')">
+                <img src="zentoro/anhxe1.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/anhxe2.png')">
+                <img src="zentoro/anhxe2.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/anhxe3.png')">
+                <img src="zentoro/anhxe3.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/560s.png')">
+                <img src="zentoro/560s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/561s.png')">
+                <img src="zentoro/561s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/562s.png')">
+                <img src="zentoro/562s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/563s.png')">
+                <img src="zentoro/563s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/564s.png')">
+                <img src="zentoro/564s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/565s.png')">
+                <img src="zentoro/565s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/566s.png')">
+                <img src="zentoro/566s.png" alt="Zentoro">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('zentoro/567s.png')">
+                <img src="zentoro/567s.png" alt="Zentoro">
+            </div>
+
+            <!-- Senna -->
+            <div class="car-item" onclick="openLightbox('senna/sena1.png')">
+                <img src="senna/sena1.png" alt="Senna">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('senna/sena2.png')">
+                <img src="senna/sena2.png" alt="Senna">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('senna/sena3.png')">
+                <img src="senna/sena3.png" alt="Senna">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('senna/sena4.png')">
+                <img src="senna/sena4.png" alt="Senna">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('senna/sena5.png')">
+                <img src="senna/sena5.png" alt="Senna">
+            </div>
+
+            <div class="car-item" onclick="openLightbox('senna/sena6.png')">
+                <img src="senna/sena6.png" alt="Senna">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Car Preview">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="custom-cursor.js"></script>
+    <script>
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
